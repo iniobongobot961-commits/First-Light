@@ -1,0 +1,667 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0E1620">
+<meta name="description" content="A verse, a thought, a fact and a lesson for every day.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="data:image/png;base64,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" type="image/png">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<title>First Light</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Literata:wght@400;600&display=swap">
+<style>
+/* Layout: a tinted page per section, one reading card with a colour band and icon, five-tab bar fixed at the bottom. */
+:root {
+  --surface: #FFFFFF;
+  --fg: #16222C;
+  --muted: #566572;
+  --line: #D3DCE3;
+  --bg: #FFF9EC;
+  --accent: #8A5700;
+  --accent-soft: #FBEFD0;
+  --on-accent: #FFFFFF;
+  --display: "Literata", Georgia, "Times New Roman", serif;
+  --ui: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --verse-a: #8A5700; --verse-s: #FBEFD0; --verse-bg: #FFF9EC; --verse-on: #FFFFFF;
+    --inspire-a: #B02E43; --inspire-s: #FBE1E5; --inspire-bg: #FFF5F6; --inspire-on: #FFFFFF;
+    --facts-a: #0A6F6A; --facts-s: #D6F1EE; --facts-bg: #F1FBFA; --facts-on: #FFFFFF;
+    --learn-a: #3A7220; --learn-s: #E0F2D5; --learn-bg: #F5FBF0; --learn-on: #FFFFFF;
+    --saved-a: #35577F; --saved-s: #DFE8F3; --saved-bg: #F2F6FB; --saved-on: #FFFFFF;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --surface: #172230; --fg: #E8EEF3; --muted: #9AA9B6; --line: #263545;
+    --verse-a: #F0C05A; --verse-s: #3A2E12; --verse-bg: #17130B; --verse-on: #1A1300;
+    --inspire-a: #F59AA6; --inspire-s: #40202A; --inspire-bg: #1A1015; --inspire-on: #2A0B12;
+    --facts-a: #52D6CA; --facts-s: #123533; --facts-bg: #0C1818; --facts-on: #04211F;
+    --learn-a: #9AD875; --learn-s: #21361A; --learn-bg: #101709; --learn-on: #0F2406;
+    --saved-a: #8DB4E2; --saved-s: #1F2F43; --saved-bg: #0E1620; --saved-on: #08182B;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --surface: #172230; --fg: #E8EEF3; --muted: #9AA9B6; --line: #263545;
+  --verse-a: #F0C05A; --verse-s: #3A2E12; --verse-bg: #17130B; --verse-on: #1A1300;
+    --inspire-a: #F59AA6; --inspire-s: #40202A; --inspire-bg: #1A1015; --inspire-on: #2A0B12;
+    --facts-a: #52D6CA; --facts-s: #123533; --facts-bg: #0C1818; --facts-on: #04211F;
+    --learn-a: #9AD875; --learn-s: #21361A; --learn-bg: #101709; --learn-on: #0F2406;
+    --saved-a: #8DB4E2; --saved-s: #1F2F43; --saved-bg: #0E1620; --saved-on: #08182B;
+  color-scheme: dark;
+}
+[data-sec="verse"]   { --accent: var(--verse-a);   --accent-soft: var(--verse-s);   --on-accent: var(--verse-on);   --bg: var(--verse-bg); }
+[data-sec="inspire"] { --accent: var(--inspire-a); --accent-soft: var(--inspire-s); --on-accent: var(--inspire-on); --bg: var(--inspire-bg); }
+[data-sec="facts"]   { --accent: var(--facts-a);   --accent-soft: var(--facts-s);   --on-accent: var(--facts-on);   --bg: var(--facts-bg); }
+[data-sec="learn"]   { --accent: var(--learn-a);   --accent-soft: var(--learn-s);   --on-accent: var(--learn-on);   --bg: var(--learn-bg); }
+[data-sec="saved"]   { --accent: var(--saved-a);   --accent-soft: var(--saved-s);   --on-accent: var(--saved-on);   --bg: var(--saved-bg); }
+* { box-sizing: border-box; }
+body {
+  background: linear-gradient(180deg, var(--accent-soft) 0, var(--bg) 300px) no-repeat, var(--bg);
+  color: var(--fg);
+  font-family: var(--ui);
+  font-size: 16px;
+  line-height: 1.55;
+  padding-block: 1.25rem 7rem;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 38rem; margin: 0 auto; display: flex; flex-direction: column; gap: 1.1rem; }
+button { font: inherit; color: inherit; cursor: pointer; }
+button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+header h1 { font-family: var(--display); font-weight: 600; font-size: 1.6rem; margin: 0; line-height: 1.2; color: var(--accent); }
+header p { margin: 0.15rem 0 0; color: var(--muted); font-size: 0.9rem; }
+
+.daynav { display: flex; align-items: center; gap: 0.75rem; }
+.daynav .when { flex: 1; min-width: 0; text-align: center; font-size: 0.95rem; font-variant-numeric: tabular-nums; }
+.daynav .when strong { display: block; font-weight: 600; }
+.daynav .when span { color: var(--muted); font-size: 0.85rem; }
+.step {
+  width: 2.75rem; height: 2.75rem; border-radius: 50%;
+  border: 1px solid var(--accent-soft); background: var(--accent-soft); color: var(--accent);
+  font-size: 1.25rem; line-height: 1; flex: none;
+}
+.step:disabled { opacity: 0.35; cursor: default; }
+
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 0 0 1.5rem; overflow: hidden; }
+.card > :not(.kicker) { margin-left: 1.35rem; margin-right: 1.35rem; }
+.kicker { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); background: var(--accent-soft); padding: 0.85rem 1.35rem; margin: 0 0 1.25rem; }
+.kicker-icon { width: 1.5rem; height: 1.5rem; flex: none; }
+.kicker-icon, .tab-icon { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.card h2 { font-family: var(--display); font-weight: 600; font-size: 1.35rem; line-height: 1.3; margin: 0 0 0.6rem; text-wrap: balance; }
+.body { font-family: var(--display); font-size: clamp(1.2rem, 4.6vw, 1.5rem); line-height: 1.55; margin: 0; }
+.body.plain { font-family: var(--ui); font-size: 1.1rem; line-height: 1.6; }
+.try { margin: 1.1rem 0 0; padding: 0.85rem 1rem; border-radius: 10px; background: var(--accent-soft); font-size: 0.98rem; }
+.try b { font-weight: 600; }
+.actions { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.4rem; }
+.btn {
+  min-height: 2.75rem; padding: 0.4rem 1.1rem; border-radius: 999px;
+  border: 1px solid var(--accent); background: transparent; color: var(--accent); font-size: 0.95rem; font-weight: 500;
+}
+.btn.on { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+
+.saved-head { display: flex; justify-content: space-between; align-items: baseline; }
+.saved-head h2 { font-family: var(--display); font-size: 1.35rem; margin: 0; }
+.saved-head span { color: var(--muted); font-size: 0.9rem; }
+.saved-list { display: flex; flex-direction: column; gap: 0.9rem; }
+.saved-list .card { padding: 0 0 1.1rem; }
+.saved-list .body { font-size: 1.05rem; }
+.empty { color: var(--muted); text-align: center; padding: 2.5rem 1rem; border: 1px dashed var(--line); border-radius: 16px; margin: 0; }
+
+footer { color: var(--muted); font-size: 0.8rem; text-align: center; padding-top: 0.5rem; }
+.source { color: var(--muted); font-size: 0.8rem; margin: 1rem 0 0; }
+.sheetnote { text-align: center; }
+.sheetnote .source { margin: 0; }
+
+nav {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 5;
+  background: var(--surface); border-top: 1px solid var(--line);
+  padding: 0.25rem max(8px, env(safe-area-inset-left, 0px)) calc(0.25rem + env(safe-area-inset-bottom, 0px)) max(8px, env(safe-area-inset-right, 0px));
+}
+nav .tabs { max-width: 38rem; margin: 0 auto; display: grid; grid-template-columns: repeat(5, 1fr); }
+.tab {
+  background: none; border: 0; border-top: 3px solid transparent; border-radius: 0;
+  min-height: 3.6rem; padding: 0.35rem 0.2rem; font-size: 0.78rem; font-weight: 500; color: var(--muted);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.2rem;
+}
+.tab-icon { width: 1.4rem; height: 1.4rem; color: var(--accent); opacity: 0.7; }
+.tab[aria-current="page"] { color: var(--accent); border-top-color: var(--accent); font-weight: 600; }
+.tab[aria-current="page"] .tab-icon { opacity: 1; }
+
+.toast {
+  position: fixed; left: 50%; transform: translateX(-50%);
+  bottom: calc(5rem + env(safe-area-inset-bottom, 0px)); z-index: 6;
+  background: var(--fg); color: var(--bg); padding: 0.55rem 1rem; border-radius: 999px; font-size: 0.9rem;
+  max-width: calc(100% - 32px);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .card { animation: rise 0.25s ease-out; }
+  @keyframes rise { from { opacity: 0.4; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+}
+html{-webkit-text-size-adjust:100%}
+body{margin:0}
+[hidden]{display:none!important}
+.install{margin-top:0.75rem}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <h1>First Light</h1>
+    <p>A verse, a thought, a fact and a lesson for every day.</p>
+    <button class="btn install" id="install" type="button" hidden>Install app</button>
+  </header>
+  <div class="daynav" id="daynav">
+    <button class="step" id="prev" type="button" aria-label="Previous day">&#8249;</button>
+    <div class="when" id="when"></div>
+    <button class="step" id="next" type="button" aria-label="Next day">&#8250;</button>
+  </div>
+  <main id="view" aria-live="polite"></main>
+  <footer>Scripture is from the King James Version (public domain). Reflections and lessons are original.</footer>
+</div>
+
+<nav aria-label="Sections"><div class="tabs" id="tabs"></div></nav>
+<div class="toast" id="toast" hidden role="status"></div>
+
+<script>
+var VERSES = [
+  ["Psalm 23:1", `The LORD is my shepherd; I shall not want.`],
+  ["Philippians 4:13", `I can do all things through Christ which strengtheneth me.`],
+  ["Isaiah 41:10", `Fear thou not; for I am with thee: be not dismayed; for I am thy God: I will strengthen thee; yea, I will help thee; yea, I will uphold thee with the right hand of my righteousness.`],
+  ["Proverbs 3:5-6", `Trust in the LORD with all thine heart; and lean not unto thine own understanding. In all thy ways acknowledge him, and he shall direct thy paths.`],
+  ["Joshua 1:9", `Have not I commanded thee? Be strong and of a good courage; be not afraid, neither be thou dismayed: for the LORD thy God is with thee whithersoever thou goest.`],
+  ["Jeremiah 29:11", `For I know the thoughts that I think toward you, saith the LORD, thoughts of peace, and not of evil, to give you an expected end.`],
+  ["Matthew 11:28", `Come unto me, all ye that labour and are heavy laden, and I will give you rest.`],
+  ["Romans 8:28", `And we know that all things work together for good to them that love God, to them who are the called according to his purpose.`],
+  ["Psalm 46:1", `God is our refuge and strength, a very present help in trouble.`],
+  ["John 3:16", `For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.`],
+  ["Isaiah 40:31", `But they that wait upon the LORD shall renew their strength; they shall mount up with wings as eagles; they shall run, and not be weary; and they shall walk, and not faint.`],
+  ["Psalm 121:1-2", `I will lift up mine eyes unto the hills, from whence cometh my help. My help cometh from the LORD, which made heaven and earth.`],
+  ["Matthew 6:33", `But seek ye first the kingdom of God, and his righteousness; and all these things shall be added unto you.`],
+  ["1 Corinthians 13:13", `And now abideth faith, hope, charity, these three; but the greatest of these is charity.`],
+  ["Galatians 6:9", `And let us not be weary in well doing: for in due season we shall reap, if we faint not.`],
+  ["Psalm 27:1", `The LORD is my light and my salvation; whom shall I fear? the LORD is the strength of my life; of whom shall I be afraid?`],
+  ["Philippians 4:6-7", `Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God. And the peace of God, which passeth all understanding, shall keep your hearts and minds through Christ Jesus.`],
+  ["Romans 12:12", `Rejoicing in hope; patient in tribulation; continuing instant in prayer.`],
+  ["Lamentations 3:22-23", `It is of the LORD's mercies that we are not consumed, because his compassions fail not. They are new every morning: great is thy faithfulness.`],
+  ["Micah 6:8", `He hath shewed thee, O man, what is good; and what doth the LORD require of thee, but to do justly, and to love mercy, and to walk humbly with thy God?`],
+  ["Psalm 119:105", `Thy word is a lamp unto my feet, and a light unto my path.`],
+  ["Ephesians 2:8", `For by grace are ye saved through faith; and that not of yourselves: it is the gift of God.`],
+  ["2 Timothy 1:7", `For God hath not given us the spirit of fear; but of power, and of love, and of a sound mind.`],
+  ["Proverbs 16:3", `Commit thy works unto the LORD, and thy thoughts shall be established.`],
+  ["Colossians 3:23", `And whatsoever ye do, do it heartily, as to the Lord, and not unto men.`],
+  ["James 1:5", `If any of you lack wisdom, let him ask of God, that giveth to all men liberally, and upbraideth not; and it shall be given him.`],
+  ["Psalm 34:8", `O taste and see that the LORD is good: blessed is the man that trusteth in him.`],
+  ["Hebrews 11:1", `Now faith is the substance of things hoped for, the evidence of things not seen.`],
+  ["1 Thessalonians 5:16-18", `Rejoice evermore. Pray without ceasing. In every thing give thanks: for this is the will of God in Christ Jesus concerning you.`],
+  ["Deuteronomy 31:6", `Be strong and of a good courage, fear not, nor be afraid of them: for the LORD thy God, he it is that doth go with thee; he will not fail thee, nor forsake thee.`],
+  ["Psalm 37:4", `Delight thyself also in the LORD; and he shall give thee the desires of thine heart.`],
+  ["Matthew 5:16", `Let your light so shine before men, that they may see your good works, and glorify your Father which is in heaven.`],
+  ["John 14:27", `Peace I leave with you, my peace I give unto you: not as the world giveth, give I unto you. Let not your heart be troubled, neither let it be afraid.`],
+  ["Psalm 91:1", `He that dwelleth in the secret place of the most High shall abide under the shadow of the Almighty.`],
+  ["Psalm 139:14", `I will praise thee; for I am fearfully and wonderfully made: marvellous are thy works; and that my soul knoweth right well.`],
+  ["Proverbs 18:10", `The name of the LORD is a strong tower: the righteous runneth into it, and is safe.`],
+  ["Isaiah 26:3", `Thou wilt keep him in perfect peace, whose mind is stayed on thee: because he trusteth in thee.`],
+  ["Matthew 7:7", `Ask, and it shall be given you; seek, and ye shall find; knock, and it shall be opened unto you.`],
+  ["John 8:12", `Then spake Jesus again unto them, saying, I am the light of the world: he that followeth me shall not walk in darkness, but shall have the light of life.`],
+  ["Romans 15:13", `Now the God of hope fill you with all joy and peace in believing, that ye may abound in hope, through the power of the Holy Ghost.`],
+  ["2 Corinthians 5:7", `For we walk by faith, not by sight.`],
+  ["Psalm 118:24", `This is the day which the LORD hath made; we will rejoice and be glad in it.`],
+  ["Proverbs 15:1", `A soft answer turneth away wrath: but grievous words stir up anger.`],
+  ["Ecclesiastes 3:1", `To every thing there is a season, and a time to every purpose under the heaven.`],
+  ["Isaiah 43:2", `When thou passest through the waters, I will be with thee; and through the rivers, they shall not overflow thee: when thou walkest through the fire, thou shalt not be burned; neither shall the flame kindle upon thee.`],
+  ["Psalm 55:22", `Cast thy burden upon the LORD, and he shall sustain thee: he shall never suffer the righteous to be moved.`],
+  ["1 Peter 5:7", `Casting all your care upon him; for he careth for you.`],
+  ["John 15:5", `I am the vine, ye are the branches: He that abideth in me, and I in him, the same bringeth forth much fruit: for without me ye can do nothing.`],
+  ["Ephesians 4:32", `And be ye kind one to another, tenderhearted, forgiving one another, even as God for Christ's sake hath forgiven you.`],
+  ["Psalm 30:5", `For his anger endureth but a moment; in his favour is life: weeping may endure for a night, but joy cometh in the morning.`],
+  ["Proverbs 27:17", `Iron sharpeneth iron; so a man sharpeneth the countenance of his friend.`],
+  ["Matthew 28:20", `Teaching them to observe all things whatsoever I have commanded you: and, lo, I am with you alway, even unto the end of the world. Amen.`],
+  ["Psalm 19:14", `Let the words of my mouth, and the meditation of my heart, be acceptable in thy sight, O LORD, my strength, and my redeemer.`],
+  ["Romans 5:8", `But God commendeth his love toward us, in that, while we were yet sinners, Christ died for us.`],
+  ["1 John 4:19", `We love him, because he first loved us.`],
+  ["Psalm 100:4", `Enter into his gates with thanksgiving, and into his courts with praise: be thankful unto him, and bless his name.`],
+  ["Proverbs 22:6", `Train up a child in the way he should go: and when he is old, he will not depart from it.`],
+  ["Matthew 19:26", `But Jesus beheld them, and said unto them, With men this is impossible; but with God all things are possible.`],
+  ["Philippians 4:19", `But my God shall supply all your need according to his riches in glory by Christ Jesus.`],
+  ["2 Corinthians 12:9", `And he said unto me, My grace is sufficient for thee: for my strength is made perfect in weakness.`]
+];
+
+var INSPIRE = [
+  ["The Seed", `A farmer planted seeds in dry ground and watered them for weeks with nothing to show for it. He kept going. One morning the whole field was green. Most growth happens underground first, where nobody is watching.`],
+  ["One Step", `You do not have to see the whole staircase. Take the step in front of you today, and the next one will be visible when you get there.`],
+  ["The Cracked Pot", `A water carrier had two pots. One was cracked and lost half its water on the walk home, and it felt ashamed. The carrier pointed to the path: flowers had grown along its side, watered every day by the leak. What you count as a flaw may be feeding something you cannot see yet.`],
+  ["Begin Anyway", `Waiting until you feel ready is how many good things never start. Begin tired, begin unsure, begin small.`],
+  ["Rest Is Part of the Work", `A field left fallow for a season grows a better crop the next year. Rest is not quitting. It is how you stay able to keep going.`],
+  ["Eyes on Your Feet", `A hiker asked the guide how long until the summit. The guide said, "Watch your feet, not the peak. The peak is where you are going. Your feet are how you get there."`],
+  ["Say the Kind Thing", `A kind sentence costs nothing to say and may be the only one someone hears all day. Say it.`],
+  ["Showing Up", `Every skill you have now was once something you could not do. The difference between then and now was not talent. It was the days you showed up.`],
+  ["The Lighthouse", `A lighthouse does not run around looking for ships to save. It stands in its place and shines. Be steady, and the people who need your light will find it.`],
+  ["Enough for Today", `You will not finish everything. Nobody does. Do the things that matter most, then let the rest wait without guilt.`],
+  ["Gratitude First", `Before you look at your phone this morning, name three things you are glad to have. It changes the tone of the whole day.`],
+  ["Shaking Hands", `Courage is not the absence of fear. It is doing the right thing while your hands are still shaking.`],
+  ["Quiet Roots", `Some bamboo spends years growing roots before it shoots up. Quiet seasons of preparation are not wasted seasons.`],
+  ["Set the Stone Down", `Holding a grudge is like carrying a stone you meant to throw. Put it down. Your arm will thank you.`],
+  ["Be Here", `The people around you will not always be around. Put your phone down for one conversation today and really listen.`],
+  ["Not the Last Page", `A hard chapter is not the whole book. You are still being written.`],
+  ["Pass It On", `Someone helped you once when they did not have to. Pass that on today in a small way.`],
+  ["Let It Rise", `Bread cannot be rushed. Some good things need time to rise, and opening the oven early only ruins them.`],
+  ["Unwatched Work", `Do the task in front of you as well as you can, even when no one will check. That habit builds a character no one can take from you.`],
+  ["Fresh Start", `Yesterday's mistakes were made by someone with less information than you have now. Learn what they taught you and begin again.`],
+  ["Ask One More Question", `Two people can hear the same words and understand different things. Ask one more question before you decide what someone meant.`],
+  ["How You Talk to Yourself", `Speak to yourself the way you would speak to a friend in the same spot. You would not call them a failure. Do not call yourself one.`],
+  ["One Candle", `A candle loses nothing by lighting another. Share what you know, what you have and your joy.`],
+  ["Hard Days End", `Hard days end. You have survived every one so far, and that record is a hundred percent.`],
+  ["Plant the Tree", `There is a saying that the best time to plant a tree was twenty years ago, and the second best time is now. The same goes for the habit, the apology or the dream you keep putting off.`],
+  ["Small and Repeated", `Big changes are made of small, ordinary choices repeated many times. Make today's choice count.`],
+  ["Send the Message", `Text someone who crossed your mind this morning. Often they needed it more than you know.`],
+  ["Carry Together", `Nobody was meant to carry everything alone. Ask for help today, or offer it.`],
+  ["The Long Way Round", `A traveler took a wrong turn and found a view he would never have seen otherwise. Detours are not always delays. Sometimes they are the route.`],
+  ["Write It Down", `Worries that circle in your head get lighter once they are on paper. Write down what you are worried about, then circle the one thing you can do today.`],
+  ["The Last Ten Percent", `Most projects do not fail at the start. They stall near the end, when the excitement is gone and the details remain. Finish what you started.`],
+  ["Listen to the Quiet", `In a noisy day, five minutes of silence is not empty. It is where you can hear what matters.`],
+  ["Compare Wisely", `Someone's finished work is sitting next to your first draft. Compare yourself with who you were last year, not with who they are today.`],
+  ["The Open Door", `When one door closes, we often stare at it so long that we miss the others. Look up.`],
+  ["Teach What You Know", `You know something someone else is struggling with right now. Share it, even if you think it is obvious. It is not obvious to them.`],
+  ["Dress for the Weather", `You cannot control the weather, only what you wear. You cannot control what happens today, only how you meet it.`],
+  ["Thank the Helpers", `Behind every meal, road and clean street are people you will never meet. Thank one person who works behind the scenes today.`],
+  ["Mistakes Are Tuition", `Every mistake costs something, so get your money's worth. Ask what it taught you before you move on.`],
+  ["Slow Is Smooth", `Rushing creates more work. Do it carefully once and you will not have to do it twice.`],
+  ["Stay Tender", `Hard seasons can make a person bitter or gentle. You get a say in which. Choose gentle.`],
+  ["Count What You Have", `When you feel short of something, list what you do have. The list is usually longer than the worry.`],
+  ["Be the Calm", `In a tense room, one calm person changes the room. Breathe slowly and let it be you.`],
+  ["A Different Angle", `A stuck problem looks different after a walk, a rest or a talk with a friend. Change your angle before you add more effort.`],
+  ["The Anchor", `An anchor does not stop the storm. It keeps the ship from drifting. Know what holds you steady.`],
+  ["Keep the Small Promise", `Keep the small promises, like the call you said you would make. Trust is built from small things.`],
+  ["Bare Branches", `A tree does not panic when its leaves fall. Spring comes. Your own bare season is not the end of the tree.`],
+  ["Welcome Someone", `Somewhere near you, someone is new and unsure. Say hello. Sit with them.`],
+  ["Joy Is Allowed", `You do not need to fix everything before you are allowed to laugh. Laugh today anyway.`],
+  ["Say I Don't Know", `The wisest people you know still say, "I don't know." It is the beginning of learning.`],
+  ["Unplug a Little", `An hour without screens is an hour given back to you. See what you do with it.`],
+  ["Forgive Early", `The sooner you forgive, the less of your life it takes.`],
+  ["Your Own Pace", `A river does not hurry and still reaches the sea. You are allowed to move at your own pace.`],
+  ["Give Without a Scoreboard", `Give your time, help and kind words without counting what comes back. Counting is what makes giving heavy.`],
+  ["Hope Is a Habit", `Hope is not only a feeling that arrives. It is a habit you practice: look for one good thing, then say it out loud.`],
+  ["Before You Sleep", `Before you sleep, name one thing that went well today. End the day on something true and good.`]
+];
+
+var FACTS = [
+  ["Honey", `Sealed honey can last for thousands of years. Archaeologists have found preserved honey in ancient Egyptian tombs.`],
+  ["Octopuses", `An octopus has three hearts and blue blood. Two hearts pump blood through the gills, and the third pumps it to the rest of the body.`],
+  ["Africa", `Africa is the only continent that reaches into all four hemispheres: north, south, east and west.`],
+  ["Venus", `A day on Venus lasts longer than its year. It takes about 243 Earth days to turn once, but only about 225 to orbit the Sun.`],
+  ["Bananas", `Botanically, a banana is a berry and a strawberry is not. Scientists define berries differently from cooks.`],
+  ["Deserts", `The largest desert on Earth is Antarctica, not the Sahara. A desert is defined by how little precipitation it gets, not by heat.`],
+  ["Lightning", `Lightning strikes somewhere on Earth about 100 times every second.`],
+  ["Failaka Island", `Failaka Island, off the coast of Kuwait, has remains from the Bronze Age Dilmun civilization and from a Greek settlement of the Hellenistic period.`],
+  ["Oceans", `Water covers about 71% of Earth's surface, and the oceans hold about 97% of all that water.`],
+  ["Space", `Space is silent because sound needs air or another material to travel through, and space is almost empty.`],
+  ["Shortest War", `The Anglo-Zanzibar War of 1896 is considered the shortest war in history. It ended in roughly 40 minutes.`],
+  ["Crows", `Crows can recognize individual human faces and remember people who treated them badly.`],
+  ["Fresh Water", `Roughly 70% of the world's fresh water is stored in ice, and most of that ice is in Antarctica.`],
+  ["Wombats", `Wombats are the only animals known to produce cube-shaped droppings.`],
+  ["Nigeria", `More than 500 languages are spoken in Nigeria, one of the most linguistically diverse countries on Earth.`],
+  ["Great Wall", `The Great Wall of China is not easy to see from orbit with the naked eye, despite the popular claim that it is.`],
+  ["DNA", `Any two people share about 99.9% of their DNA.`],
+  ["Sunlight", `Light from the Sun takes about 8 minutes and 20 seconds to reach Earth.`],
+  ["Dead Sea", `The shore of the Dead Sea is the lowest dry land on Earth, more than 430 meters below sea level.`],
+  ["Chess", `The number of possible chess games is estimated to be far greater than the number of atoms in the observable universe.`],
+  ["Eiffel Tower", `The Eiffel Tower grows by up to about 15 centimeters in hot weather because its iron expands in the heat.`],
+  ["Butterflies", `Butterflies taste with their feet. Sensors on their legs tell them whether a leaf is good to eat or to lay eggs on.`],
+  ["Flamingos", `A group of flamingos is called a flamboyance.`],
+  ["Numbers", `The digits 0 to 9 used around the world today came from India. Arab scholars helped spread them to Europe, which is why they are called Hindu-Arabic numerals.`],
+  ["Kilimanjaro", `Mount Kilimanjaro in Tanzania stands about 5,895 meters tall and is the highest freestanding mountain in the world.`],
+  ["Your Heart", `Your heart beats roughly 100,000 times a day.`],
+  ["Coffee", `A coffee bean is the seed of a small red fruit called a coffee cherry.`],
+  ["Pluto", `Pluto is smaller than Earth's Moon, and it takes about 248 years to orbit the Sun. It has not finished one orbit since its discovery in 1930.`],
+  ["Tardigrades", `Tardigrades, also called water bears, are microscopic animals that can survive extreme cold, extreme heat and even the vacuum of space.`],
+  ["Bees", `A honeybee tells its hive where flowers are by dancing. The angle of the dance shows direction, and its length shows distance.`],
+  ["Sharks", `Sharks are older than trees. Sharks have existed for more than 400 million years, while the first trees appeared roughly 350 to 385 million years ago.`],
+  ["Burj Khalifa", `The Burj Khalifa in Dubai is the tallest building in the world, at about 828 meters.`],
+  ["Blue Whale", `The blue whale is the largest animal known to have ever lived. It can reach around 30 meters in length.`],
+  ["Amazon River", `The Amazon River carries more water than any other river on Earth, roughly a fifth of all the river water that flows into the oceans.`],
+  ["Time Zones", `France spans 12 time zones when its overseas territories are counted, more than any other country.`],
+  ["Sahara", `The Sahara is almost as large as the entire United States.`],
+  ["The Moon", `The Moon is moving away from Earth by about 3.8 centimeters every year.`],
+  ["Mount Everest", `Mount Everest rises about 8,849 meters above sea level, the highest point on Earth by that measure.`],
+  ["Rainbows", `A rainbow is really a full circle. From the ground we usually see only the top arc, but from a plane you can sometimes see the whole circle.`],
+  ["Giraffes", `A giraffe has the same number of neck bones as a human: seven. Each one is just much longer.`],
+  ["Kuwait", `The name Kuwait is a diminutive of the Arabic word kut, meaning a fortified house or small fort.`],
+  ["Blood", `An adult body holds about 5 liters of blood.`],
+  ["Jupiter", `Jupiter is so large that all the other planets in the solar system could fit inside it.`],
+  ["Diamonds", `Diamonds and pencil lead are both made of carbon. Their atoms are simply arranged differently.`],
+  ["Speed of Sound", `Sound travels about 343 meters per second in air. Count the seconds between a flash of lightning and its thunder, and every three seconds is roughly one kilometer of distance.`],
+  ["Bamboo", `Some bamboo species can grow nearly a meter in a single day.`],
+  ["Your Brain", `Your brain makes up about 2% of your body weight but uses about 20% of its energy.`],
+  ["Languages", `Roughly 7,000 languages are spoken in the world today, and about 40% of them are endangered.`],
+  ["Penguins", `Almost all penguins live in the Southern Hemisphere. The Galápagos penguin lives near the equator.`],
+  ["Printing Press", `Johannes Gutenberg's printing press, developed around 1450, made books far cheaper and helped spread reading across Europe.`],
+  ["Date Palm", `The oldest seed known to have grown into a plant was a date palm seed about 2,000 years old, found at Masada in Israel.`],
+  ["Cheetahs", `A cheetah can reach about 100 kilometers per hour in just a few seconds, making it the fastest land animal.`],
+  ["Ice", `Ice floats because water expands when it freezes, which makes ice less dense than liquid water. If it sank, lakes would freeze from the bottom up.`],
+  ["Rice", `Rice is a staple food for about half of the world's population.`],
+  ["Magnetic North", `Earth's magnetic north pole slowly wanders, which is why the models used for navigation are updated every few years.`],
+  ["Babies", `Babies are born with about 300 bones. Adults have 206 because many of them fuse together as we grow.`],
+  ["Hummingbirds", `Hummingbirds can fly backward, which almost no other bird can do.`]
+];
+
+var LEARN = [
+  ["The Two-Minute Rule", `If a task takes less than two minutes, do it right away instead of putting it on a list. Small tasks pile up faster than you expect.`, `Pick one two-minute job you have been avoiding and finish it now.`],
+  ["Box Breathing", `Breathe in for 4 seconds, hold for 4, breathe out for 4, hold for 4. Slow, even breathing helps your body settle when you feel tense.`, `Repeat the cycle four times before your next meeting or conversation.`],
+  ["Spaced Review", `You remember more when you review something at growing gaps, such as after 1 day, 3 days, 7 days and 14 days, than when you cram it all at once.`, `Look over something you learned today again tomorrow morning.`],
+  ["Explain It Simply", `If you can explain an idea in plain words to a child, you understand it. If you get stuck, that is the exact spot to study again. It is often called the Feynman technique.`, `Pick one idea from today and explain it aloud in three sentences.`],
+  ["Five Arabic Words", `A few words go a long way. Shukran means thank you, afwan means you're welcome, marhaba means hello, na'am means yes and la means no.`, `Use shukran with someone today.`],
+  ["The 20-20-20 Rule", `Screens strain your eyes. Every 20 minutes, look at something about 20 feet (6 meters) away for 20 seconds.`, `Set a repeating timer on your phone for 20 minutes.`],
+  ["The Rule of 72", `To estimate how long money takes to double, divide 72 by the yearly interest rate. At 6% it takes about 12 years. At 9%, about 8 years.`, `Try it with a rate you have seen on a savings account.`],
+  ["Pomodoro Focus", `Work with full attention for 25 minutes, then rest for 5. After four rounds, take a longer break of 15 to 30 minutes.`, `Run one 25-minute round on your most important task.`],
+  ["Active Listening", `Before you answer, repeat back what you heard in your own words: "So you're saying..." People feel understood, and you catch mistakes early.`, `Do it once in your next conversation.`],
+  ["Multiply by 11", `For a two-digit number, add its digits and put the sum in the middle. 23 × 11: 2 + 3 = 5, so the answer is 253. If the sum is 10 or more, carry the 1 to the left digit.`, `Try 45 × 11 (answer: 495), then 78 × 11 (answer: 858).`],
+  ["Know Your Emergency Number", `Emergency numbers differ by country: 112 in Kuwait and across the EU, 911 in the United States and Canada, 999 in the United Kingdom.`, `Save the right number for where you live in your phone's favorites.`],
+  ["The 50/30/20 Budget", `A simple way to split income after tax: 50% for needs like rent and food, 30% for wants, and 20% for savings or paying off debt.`, `Sort last month's spending into those three groups and see where you land.`],
+  ["Cool a Burn", `For a minor burn, cool the skin under cool running water for 10 to 20 minutes. Do not use ice, butter or toothpaste. See a doctor for large, deep or facial burns.`, `Find the cold tap in your kitchen now so you know how to reach it fast.`],
+  ["Memorize a Verse", `Read it aloud three times. Write it out once. Then cover a few words, say it again, and cover a few more each round until you can say it all.`, `Try it with today's verse.`],
+  ["Roman Numerals", `The seven symbols are I = 1, V = 5, X = 10, L = 50, C = 100, D = 500 and M = 1000. A smaller symbol before a larger one is subtracted, so IV is 4 and IX is 9.`, `Write this year in Roman numerals.`],
+  ["Find North at Night", `In the Northern Hemisphere, find the Big Dipper and follow the line from the two stars at the end of its bowl. It points to Polaris, the North Star.`, `Look up tonight if the sky is clear.`],
+  ["The 80/20 Idea", `Often about 80% of your results come from about 20% of your effort. It is a rule of thumb, not a law, but it is a good prompt to ask what really matters.`, `List your tasks for today and circle the two that matter most.`],
+  ["Touch Typing", `Rest your fingers on A S D F and J K L ; with your thumbs on the space bar. Return to that home row after every key. Accuracy first, speed later.`, `Practice for five minutes without looking at the keys.`],
+  ["Memory Palace", `Picture a route you know well, like walking through your home. Place each thing you want to remember at a spot along the route with a vivid image, then walk the route in your mind to recall them.`, `Memorize a shopping list of five items this way.`],
+  ["Check a Source", `Before you share something online, ask who wrote it, when, what evidence it gives, and whether anyone reliable reports the same thing.`, `Check one claim you saw today with a second source.`],
+  ["Add Up a Column", `In a spreadsheet, type =SUM(A1:A10) in any empty cell to add the numbers in cells A1 through A10. Change the letters and numbers to match your data.`, `Try it with a short list of your expenses.`],
+  ["Say No Kindly", `You can decline without a long excuse: "Thank you for asking. I can't take that on right now." A clear, warm no is kinder than a yes you will resent.`, `Practice the sentence once out loud.`],
+  ["Steady Wake-Up Time", `Waking at about the same time every day, even on days off, helps your body clock more than most sleep tricks.`, `Choose a wake-up time you can keep all week.`],
+  ["The Reef Knot", `To join two ropes: cross the right end over the left and tuck it under, then cross the left end over the right and tuck it under. Right over left, left over right.`, `Practice with two shoelaces.`],
+  ["Write a Thank-You Note", `A short, specific thank-you means more than a long general one. Name what the person did and what difference it made.`, `Write two sentences to someone who helped you recently.`],
+  ["Read the Label", `On packaged food, check the serving size first. Then look at sugar, salt (sodium) and the ingredient list, where the first item is the largest.`, `Read the label of something in your kitchen.`],
+  ["Walk and Think", `Walking, even for ten minutes, tends to make thinking and mood a little better. It is a free reset when you feel stuck.`, `Take a ten-minute walk with your phone in your pocket.`],
+  ["Name the Feeling", `Putting a name on an emotion, like "I feel anxious" or "I feel overlooked", can make it easier to handle. Naming it creates a little distance.`, `Name what you feel right now in one word.`],
+  ["Read Aloud", `Reading aloud helps you spot clumsy sentences, catch mistakes and remember what you read.`, `Read your next email out loud before you send it.`],
+  ["Decide with Two Lists", `For a hard choice, list what you gain and what you risk with each option. Then ask what you would advise a friend in the same spot.`, `Try it on one small decision today.`],
+  ["Remember Names", `When you meet someone, repeat their name straight away and use it once or twice in the conversation. It sticks far better.`, `Use someone's name in your next conversation.`],
+  ["Stand Up Each Hour", `Sitting for long stretches is hard on your body. Stand, stretch or walk for a minute every hour.`, `Set an hourly reminder for the rest of today.`],
+  ["How to Apologize", `A good apology names what you did, says you are sorry for its effect, and says what you will do differently. It does not add "but".`, `Rehearse one in your head for something you have been avoiding.`],
+  ["Quick Percentages", `To find 10% of a number, move the decimal point one place to the left. For 20%, double that. For 15%, add 10% and half of 10%.`, `Work out a 15% tip on 40 (answer: 6).`],
+  ["Keyboard Shortcuts", `Ctrl+C copies, Ctrl+V pastes, Ctrl+Z undoes and Ctrl+F finds words on a page. On a Mac, use Cmd instead of Ctrl.`, `Use Ctrl+F (or Cmd+F) to find a word on a page today.`],
+  ["Strong Passwords", `A long phrase of several random words is stronger and easier to remember than a short, complicated password. Use a different one for each important account. A password manager can help.`, `Change your email password if you use it anywhere else.`],
+  ["Spot a Scam Message", `Scams create urgency, ask for codes or money, and use odd links. A real bank will not ask for your PIN or a one-time code by message or phone call.`, `Do not tap links in unexpected messages. Open the official app or website yourself.`],
+  ["Time Zone Math", `Kuwait is 3 hours ahead of UTC and does not change its clocks. To find the time elsewhere, add or subtract that place's difference from UTC.`, `Work out the time in London in winter, when it matches UTC.`],
+  ["Mixing Colors", `Red, yellow and blue make most other colors. Red and yellow make orange, yellow and blue make green, and blue and red make purple.`, `Try it with any paints, crayons or markers you have.`],
+  ["Why We Have Seasons", `Seasons happen because Earth is tilted, not because it moves closer to or farther from the Sun. When your half of the world tilts toward the Sun, it is summer.`, `Explain it to someone this week.`],
+  ["Hello in Five Languages", `Hola (Spanish), Bonjour (French), Habari (Swahili), Namaste (Hindi) and Sannu (Hausa).`, `Greet someone with one of them today.`],
+  ["Give Good Feedback", `Be specific and kind. Say what worked, what to change and why. Talk about the work, not the person.`, `Give one specific compliment today.`],
+  ["A To-Do List That Works", `Write the next physical action for each task, like "Call the dentist", instead of a vague goal like "Health". Keep your priorities for the day to three.`, `Write your three for today.`],
+  ["Drink Water in the Heat", `In hot weather, do not wait until you are very thirsty. Sip water regularly through the day, especially when you are outside.`, `Keep a bottle of water within reach today.`],
+  ["The Planets in Order", `Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune. A sentence helps: My Very Educated Mother Just Served Us Nachos.`, `Say them in order without looking.`],
+  ["Compare by Unit Price", `Check the price per 100 grams or per liter on the shelf label. The bigger pack is not always the better deal.`, `Compare two similar products next time you shop.`],
+  ["Better Notes", `Write notes in your own words instead of copying word for word, and add one line at the end that sums up the main idea.`, `Sum up this lesson in one line.`],
+  ["Set a Scroll Limit", `Decide how long you will spend before you open a social app, and set a timer. Deciding first beats trying to stop later.`, `Set a 15-minute timer next time you open one.`],
+  ["Test Your Smoke Alarm", `Smoke alarms save lives, but only when they work. Press the test button once a month and replace the batteries when they run low.`, `Test the alarm in your home this week.`],
+  ["Three-Line Journal", `Each evening, write three lines: what happened, what you learned, and what you are thankful for.`, `Write your three lines tonight.`],
+  ["Subject and Verb", `Every complete sentence needs a subject (who or what) and a verb (the action). "Birds sing" is a complete sentence.`, `Find the subject and verb in the next sentence you read.`],
+  ["Celsius to Fahrenheit", `For a rough answer, double the Celsius number and add 30. The exact way is to multiply by 1.8 and add 32. At 25°C, the rough answer is 80°F and the exact one is 77°F.`, `Convert 30°C both ways.`],
+  ["Speak with Pauses", `When you speak to a group, pause instead of filling gaps with "um". Slow down and look at one person at a time.`, `Practice a 30-second introduction of yourself with two pauses.`],
+  ["Ask Open Questions", `Questions that begin with "what" or "how" get fuller answers than questions that can be answered with yes or no.`, `Ask one open question in your next conversation.`]
+];
+
+var SECTIONS = {
+  verse:   { label: "Verse",   kicker: "Verse of the day",   items: VERSES,  salt: 0 },
+  inspire: { label: "Inspire", kicker: "Inspiration",         items: INSPIRE, salt: 7 },
+  facts:   { label: "Facts",   kicker: "Did you know?",       items: FACTS,   salt: 3 },
+  learn:   { label: "Learn",   kicker: "Learn something new", items: LEARN,   salt: 11 }
+};
+var ORDER = ["verse", "inspire", "facts", "learn", "saved"];
+
+var tab = "verse";
+var offset = 0;
+var todayKey = dateKey(new Date());
+var saved = loadSaved();
+
+try { var t = localStorage.getItem("fl-tab"); if (t && ORDER.indexOf(t) > -1) tab = t; } catch (e) {}
+
+function dateKey(d) { return d.getFullYear() + "-" + d.getMonth() + "-" + d.getDate(); }
+function mod(n, m) { return ((n % m) + m) % m; }
+function dayDate(off) { var n = new Date(); return new Date(n.getFullYear(), n.getMonth(), n.getDate() + off); }
+function dayNumber(d) { return Math.round(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) / 86400000); }
+var START = dayNumber(new Date(2026, 10, 24));
+function minOffset() { return START - dayNumber(dayDate(0)); }
+function pickIndex(sec, off) { var s = SECTIONS[sec]; return mod(dayNumber(dayDate(off)) - START, s.items.length); }
+
+// Schedule published from the Google Sheet, one row per date.
+// Columns: date, verse reference, verse, inspiration title, inspiration, fact topic, fact, lesson title, lesson, try it.
+// A date with a row uses it. Any other date uses the built-in schedule.
+var sheetRows = /*SCHEDULE*/{"2026-11-24":["2026-11-24","Psalm 23:1","The LORD is my shepherd; I shall not want.","The Seed","A farmer planted seeds in dry ground and watered them for weeks with nothing to show for it. He kept going. One morning the whole field was green. Most growth happens underground first, where nobody is watching.","Honey","Sealed honey can last for thousands of years. Archaeologists have found preserved honey in ancient Egyptian tombs.","The Two-Minute Rule","If a task takes less than two minutes, do it right away instead of putting it on a list. Small tasks pile up faster than you expect.","Pick one two-minute job you have been avoiding and finish it now."],"2026-11-25":["2026-11-25","John 10:30","I and my Father are one","One Step","You do not have to see the whole staircase. Take the step in front of you today, and the next one will be visible when you get there.","Octopuses","An octopus has three hearts and blue blood. Two hearts pump blood through the gills, and the third pumps it to the rest of the body.","Box Breathing","Breathe in for 4 seconds, hold for 4, breathe out for 4, hold for 4. Slow, even breathing helps your body settle when you feel tense.","Repeat the cycle four times before your next meeting or conversation."],"2026-11-26":["2026-11-26","Isaiah 41:10","Fear thou not; for I am with thee: be not dismayed; for I am thy God: I will strengthen thee; yea, I will help thee; yea, I will uphold thee with the right hand of my righteousness.","The Cracked Pot","A water carrier had two pots. One was cracked and lost half its water on the walk home, and it felt ashamed. The carrier pointed to the path: flowers had grown along its side, watered every day by the leak. What you count as a flaw may be feeding something you cannot see yet.","Africa","Africa is the only continent that reaches into all four hemispheres: north, south, east and west.","Spaced Review","You remember more when you review something at growing gaps, such as after 1 day, 3 days, 7 days and 14 days, than when you cram it all at once.","Look over something you learned today again tomorrow morning."],"2026-11-27":["2026-11-27","Proverbs 3:5-6","Trust in the LORD with all thine heart; and lean not unto thine own understanding. In all thy ways acknowledge him, and he shall direct thy paths.","Begin Anyway","Waiting until you feel ready is how many good things never start. Begin tired, begin unsure, begin small.","Venus","A day on Venus lasts longer than its year. It takes about 243 Earth days to turn once, but only about 225 to orbit the Sun.","Explain It Simply","If you can explain an idea in plain words to a child, you understand it. If you get stuck, that is the exact spot to study again. It is often called the Feynman technique.","Pick one idea from today and explain it aloud in three sentences."],"2026-11-28":["2026-11-28","Joshua 1:9","Have not I commanded thee? Be strong and of a good courage; be not afraid, neither be thou dismayed: for the LORD thy God is with thee whithersoever thou goest.","Rest Is Part of the Work","A field left fallow for a season grows a better crop the next year. Rest is not quitting. It is how you stay able to keep going.","Bananas","Botanically, a banana is a berry and a strawberry is not. Scientists define berries differently from cooks.","Five Arabic Words","A few words go a long way. Shukran means thank you, afwan means you're welcome, marhaba means hello, na'am means yes and la means no.","Use shukran with someone today."],"2026-11-29":["2026-11-29","Jeremiah 29:11","For I know the thoughts that I think toward you, saith the LORD, thoughts of peace, and not of evil, to give you an expected end.","Eyes on Your Feet","A hiker asked the guide how long until the summit. The guide said, \"Watch your feet, not the peak. The peak is where you are going. Your feet are how you get there.\"","Deserts","The largest desert on Earth is Antarctica, not the Sahara. A desert is defined by how little precipitation it gets, not by heat.","The 20-20-20 Rule","Screens strain your eyes. Every 20 minutes, look at something about 20 feet (6 meters) away for 20 seconds.","Set a repeating timer on your phone for 20 minutes."],"2026-11-30":["2026-11-30","Matthew 11:28","Come unto me, all ye that labour and are heavy laden, and I will give you rest.","Say the Kind Thing","A kind sentence costs nothing to say and may be the only one someone hears all day. Say it.","Lightning","Lightning strikes somewhere on Earth about 100 times every second.","The Rule of 72","To estimate how long money takes to double, divide 72 by the yearly interest rate. At 6% it takes about 12 years. At 9%, about 8 years.","Try it with a rate you have seen on a savings account."],"2026-12-01":["2026-12-01","Romans 8:28","And we know that all things work together for good to them that love God, to them who are the called according to his purpose.","Showing Up","Every skill you have now was once something you could not do. The difference between then and now was not talent. It was the days you showed up.","Failaka Island","Failaka Island, off the coast of Kuwait, has remains from the Bronze Age Dilmun civilization and from a Greek settlement of the Hellenistic period.","Pomodoro Focus","Work with full attention for 25 minutes, then rest for 5. After four rounds, take a longer break of 15 to 30 minutes.","Run one 25-minute round on your most important task."],"2026-12-02":["2026-12-02","Psalm 46:1","God is our refuge and strength, a very present help in trouble.","The Lighthouse","A lighthouse does not run around looking for ships to save. It stands in its place and shines. Be steady, and the people who need your light will find it.","Oceans","Water covers about 71% of Earth's surface, and the oceans hold about 97% of all that water.","Active Listening","Before you answer, repeat back what you heard in your own words: \"So you're saying...\" People feel understood, and you catch mistakes early.","Do it once in your next conversation."],"2026-12-03":["2026-12-03","John 3:16","For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.","Enough for Today","You will not finish everything. Nobody does. Do the things that matter most, then let the rest wait without guilt.","Space","Space is silent because sound needs air or another material to travel through, and space is almost empty.","Multiply by 11","For a two-digit number, add its digits and put the sum in the middle. 23 × 11: 2 + 3 = 5, so the answer is 253. If the sum is 10 or more, carry the 1 to the left digit.","Try 45 × 11 (answer: 495), then 78 × 11 (answer: 858)."],"2026-12-04":["2026-12-04","Isaiah 40:31","But they that wait upon the LORD shall renew their strength; they shall mount up with wings as eagles; they shall run, and not be weary; and they shall walk, and not faint.","Gratitude First","Before you look at your phone this morning, name three things you are glad to have. It changes the tone of the whole day.","Shortest War","The Anglo-Zanzibar War of 1896 is considered the shortest war in history. It ended in roughly 40 minutes.","Know Your Emergency Number","Emergency numbers differ by country: 112 in Kuwait and across the EU, 911 in the United States and Canada, 999 in the United Kingdom.","Save the right number for where you live in your phone's favorites."],"2026-12-05":["2026-12-05","Psalm 121:1-2","I will lift up mine eyes unto the hills, from whence cometh my help. My help cometh from the LORD, which made heaven and earth.","Shaking Hands","Courage is not the absence of fear. It is doing the right thing while your hands are still shaking.","Crows","Crows can recognize individual human faces and remember people who treated them badly.","The 50/30/20 Budget","A simple way to split income after tax: 50% for needs like rent and food, 30% for wants, and 20% for savings or paying off debt.","Sort last month's spending into those three groups and see where you land."],"2026-12-06":["2026-12-06","Matthew 6:33","But seek ye first the kingdom of God, and his righteousness; and all these things shall be added unto you.","Quiet Roots","Some bamboo spends years growing roots before it shoots up. Quiet seasons of preparation are not wasted seasons.","Fresh Water","Roughly 70% of the world's fresh water is stored in ice, and most of that ice is in Antarctica.","Cool a Burn","For a minor burn, cool the skin under cool running water for 10 to 20 minutes. Do not use ice, butter or toothpaste. See a doctor for large, deep or facial burns.","Find the cold tap in your kitchen now so you know how to reach it fast."],"2026-12-07":["2026-12-07","1 Corinthians 13:13","And now abideth faith, hope, charity, these three; but the greatest of these is charity.","Set the Stone Down","Holding a grudge is like carrying a stone you meant to throw. Put it down. Your arm will thank you.","Wombats","Wombats are the only animals known to produce cube-shaped droppings.","Memorize a Verse","Read it aloud three times. Write it out once. Then cover a few words, say it again, and cover a few more each round until you can say it all.","Try it with today's verse."],"2026-12-08":["2026-12-08","Galatians 6:9","And let us not be weary in well doing: for in due season we shall reap, if we faint not.","Be Here","The people around you will not always be around. Put your phone down for one conversation today and really listen.","Nigeria","More than 500 languages are spoken in Nigeria, one of the most linguistically diverse countries on Earth.","Roman Numerals","The seven symbols are I = 1, V = 5, X = 10, L = 50, C = 100, D = 500 and M = 1000. A smaller symbol before a larger one is subtracted, so IV is 4 and IX is 9.","Write this year in Roman numerals."],"2026-12-09":["2026-12-09","Psalm 27:1","The LORD is my light and my salvation; whom shall I fear? the LORD is the strength of my life; of whom shall I be afraid?","Not the Last Page","A hard chapter is not the whole book. You are still being written.","Great Wall","The Great Wall of China is not easy to see from orbit with the naked eye, despite the popular claim that it is.","Find North at Night","In the Northern Hemisphere, find the Big Dipper and follow the line from the two stars at the end of its bowl. It points to Polaris, the North Star.","Look up tonight if the sky is clear."],"2026-12-10":["2026-12-10","Philippians 4:6-7","Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God. And the peace of God, which passeth all understanding, shall keep your hearts and minds through Christ Jesus.","Pass It On","Someone helped you once when they did not have to. Pass that on today in a small way.","DNA","Any two people share about 99.9% of their DNA.","The 80/20 Idea","Often about 80% of your results come from about 20% of your effort. It is a rule of thumb, not a law, but it is a good prompt to ask what really matters.","List your tasks for today and circle the two that matter most."],"2026-12-11":["2026-12-11","Romans 12:12","Rejoicing in hope; patient in tribulation; continuing instant in prayer.","Let It Rise","Bread cannot be rushed. Some good things need time to rise, and opening the oven early only ruins them.","Sunlight","Light from the Sun takes about 8 minutes and 20 seconds to reach Earth.","Touch Typing","Rest your fingers on A S D F and J K L ; with your thumbs on the space bar. Return to that home row after every key. Accuracy first, speed later.","Practice for five minutes without looking at the keys."],"2026-12-12":["2026-12-12","Lamentations 3:22-23","It is of the LORD's mercies that we are not consumed, because his compassions fail not. They are new every morning: great is thy faithfulness.","Unwatched Work","Do the task in front of you as well as you can, even when no one will check. That habit builds a character no one can take from you.","Dead Sea","The shore of the Dead Sea is the lowest dry land on Earth, more than 430 meters below sea level.","Memory Palace","Picture a route you know well, like walking through your home. Place each thing you want to remember at a spot along the route with a vivid image, then walk the route in your mind to recall them.","Memorize a shopping list of five items this way."],"2026-12-13":["2026-12-13","Micah 6:8","He hath shewed thee, O man, what is good; and what doth the LORD require of thee, but to do justly, and to love mercy, and to walk humbly with thy God?","Fresh Start","Yesterday's mistakes were made by someone with less information than you have now. Learn what they taught you and begin again.","Chess","The number of possible chess games is estimated to be far greater than the number of atoms in the observable universe.","Check a Source","Before you share something online, ask who wrote it, when, what evidence it gives, and whether anyone reliable reports the same thing.","Check one claim you saw today with a second source."],"2026-12-14":["2026-12-14","Psalm 119:105","Thy word is a lamp unto my feet, and a light unto my path.","Ask One More Question","Two people can hear the same words and understand different things. Ask one more question before you decide what someone meant.","Eiffel Tower","The Eiffel Tower grows by up to about 15 centimeters in hot weather because its iron expands in the heat.","Add Up a Column","In a spreadsheet, type =SUM(A1:A10) in any empty cell to add the numbers in cells A1 through A10. Change the letters and numbers to match your data.","Try it with a short list of your expenses."],"2026-12-15":["2026-12-15","Ephesians 2:8","For by grace are ye saved through faith; and that not of yourselves: it is the gift of God.","How You Talk to Yourself","Speak to yourself the way you would speak to a friend in the same spot. You would not call them a failure. Do not call yourself one.","Butterflies","Butterflies taste with their feet. Sensors on their legs tell them whether a leaf is good to eat or to lay eggs on.","Say No Kindly","You can decline without a long excuse: \"Thank you for asking. I can't take that on right now.\" A clear, warm no is kinder than a yes you will resent.","Practice the sentence once out loud."],"2026-12-16":["2026-12-16","2 Timothy 1:7","For God hath not given us the spirit of fear; but of power, and of love, and of a sound mind.","One Candle","A candle loses nothing by lighting another. Share what you know, what you have and your joy.","Flamingos","A group of flamingos is called a flamboyance.","Steady Wake-Up Time","Waking at about the same time every day, even on days off, helps your body clock more than most sleep tricks.","Choose a wake-up time you can keep all week."],"2026-12-17":["2026-12-17","Proverbs 16:3","Commit thy works unto the LORD, and thy thoughts shall be established.","Hard Days End","Hard days end. You have survived every one so far, and that record is a hundred percent.","Numbers","The digits 0 to 9 used around the world today came from India. Arab scholars helped spread them to Europe, which is why they are called Hindu-Arabic numerals.","The Reef Knot","To join two ropes: cross the right end over the left and tuck it under, then cross the left end over the right and tuck it under. Right over left, left over right.","Practice with two shoelaces."],"2026-12-18":["2026-12-18","Colossians 3:23","And whatsoever ye do, do it heartily, as to the Lord, and not unto men.","Plant the Tree","There is a saying that the best time to plant a tree was twenty years ago, and the second best time is now. The same goes for the habit, the apology or the dream you keep putting off.","Kilimanjaro","Mount Kilimanjaro in Tanzania stands about 5,895 meters tall and is the highest freestanding mountain in the world.","Write a Thank-You Note","A short, specific thank-you means more than a long general one. Name what the person did and what difference it made.","Write two sentences to someone who helped you recently."],"2026-12-19":["2026-12-19","James 1:5","If any of you lack wisdom, let him ask of God, that giveth to all men liberally, and upbraideth not; and it shall be given him.","Small and Repeated","Big changes are made of small, ordinary choices repeated many times. Make today's choice count.","Your Heart","Your heart beats roughly 100,000 times a day.","Read the Label","On packaged food, check the serving size first. Then look at sugar, salt (sodium) and the ingredient list, where the first item is the largest.","Read the label of something in your kitchen."],"2026-12-20":["2026-12-20","Psalm 34:8","O taste and see that the LORD is good: blessed is the man that trusteth in him.","Send the Message","Text someone who crossed your mind this morning. Often they needed it more than you know.","Coffee","A coffee bean is the seed of a small red fruit called a coffee cherry.","Walk and Think","Walking, even for ten minutes, tends to make thinking and mood a little better. It is a free reset when you feel stuck.","Take a ten-minute walk with your phone in your pocket."],"2026-12-21":["2026-12-21","Hebrews 11:1","Now faith is the substance of things hoped for, the evidence of things not seen.","Carry Together","Nobody was meant to carry everything alone. Ask for help today, or offer it.","Pluto","Pluto is smaller than Earth's Moon, and it takes about 248 years to orbit the Sun. It has not finished one orbit since its discovery in 1930.","Name the Feeling","Putting a name on an emotion, like \"I feel anxious\" or \"I feel overlooked\", can make it easier to handle. Naming it creates a little distance.","Name what you feel right now in one word."],"2026-12-22":["2026-12-22","1 Thessalonians 5:16-18","Rejoice evermore. Pray without ceasing. In every thing give thanks: for this is the will of God in Christ Jesus concerning you.","The Long Way Round","A traveler took a wrong turn and found a view he would never have seen otherwise. Detours are not always delays. Sometimes they are the route.","Tardigrades","Tardigrades, also called water bears, are microscopic animals that can survive extreme cold, extreme heat and even the vacuum of space.","Read Aloud","Reading aloud helps you spot clumsy sentences, catch mistakes and remember what you read.","Read your next email out loud before you send it."],"2026-12-23":["2026-12-23","Deuteronomy 31:6","Be strong and of a good courage, fear not, nor be afraid of them: for the LORD thy God, he it is that doth go with thee; he will not fail thee, nor forsake thee.","Write It Down","Worries that circle in your head get lighter once they are on paper. Write down what you are worried about, then circle the one thing you can do today.","Bees","A honeybee tells its hive where flowers are by dancing. The angle of the dance shows direction, and its length shows distance.","Decide with Two Lists","For a hard choice, list what you gain and what you risk with each option. Then ask what you would advise a friend in the same spot.","Try it on one small decision today."]}/*END*/;
+
+function keyOf(d) {
+  function p(n) { return (n < 10 ? "0" : "") + n; }
+  return d.getFullYear() + "-" + p(d.getMonth() + 1) + "-" + p(d.getDate());
+}
+function cell(row, i) { var v = row && row[i]; return typeof v === "string" ? v.trim() : ""; }
+function sheetItem(sec, row) {
+  var a, b;
+  if (sec === "verse") { a = cell(row, 1); b = cell(row, 2); return a && b ? [a, b] : null; }
+  if (sec === "inspire") { a = cell(row, 3); b = cell(row, 4); return a && b ? [a, b] : null; }
+  if (sec === "facts") { a = cell(row, 5); b = cell(row, 6); return a && b ? [a, b] : null; }
+  if (sec === "learn") { a = cell(row, 7); b = cell(row, 8); return a && b ? [a, b, cell(row, 9)] : null; }
+  return null;
+}
+function currentItem(sec, off) {
+  var key = keyOf(dayDate(off));
+  var row = sheetRows[key];
+  if (row) {
+    var it = sheetItem(sec, row);
+    if (it) return { id: "sheet:" + sec + ":" + key, item: it };
+  }
+  var idx = pickIndex(sec, off);
+  return { id: sec + ":" + idx, item: SECTIONS[sec].items[idx] };
+}
+
+function loadSaved() { try { return JSON.parse(localStorage.getItem("fl-saved") || "[]"); } catch (e) { return []; } }
+function persistSaved() { try { localStorage.setItem("fl-saved", JSON.stringify(saved)); } catch (e) {} }
+function isSaved(id) { return saved.some(function (s) { return s.id === id; }); }
+
+function plainText(sec, item) {
+  if (sec === "verse") return item[0] + " (KJV): " + item[1];
+  if (sec === "learn") return item[0] + ": " + item[1] + (item[2] ? " Try it: " + item[2] : "");
+  return item[0] + ": " + item[1];
+}
+
+function el(tag, cls, text) {
+  var n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text != null) n.textContent = text;
+  return n;
+}
+
+var ICONS = {
+  verse: '<path d="M12 6.5C10.2 5 7.6 4.5 4.5 4.5v13c3.1 0 5.7.5 7.5 2 1.8-1.5 4.4-2 7.5-2v-13c-3.1 0-5.7.5-7.5 2Z"/><path d="M12 6.5v13"/>',
+  inspire: '<circle cx="12" cy="12" r="3.8"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M18.7 5.3l-2.1 2.1M7.4 16.6l-2.1 2.1"/>',
+  facts: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.7 3.9 5.7 3.9 9s-1.3 6.3-3.9 9c-2.6-2.7-3.9-5.7-3.9-9S9.4 5.7 12 3Z"/>',
+  learn: '<path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2V16h5v-.1c0-.8.4-1.5 1-2A6 6 0 0 0 12 3Z"/>',
+  saved: '<path d="M6.5 3.5h11v17l-5.5-4-5.5 4v-17Z"/>'
+};
+function iconEl(key, cls) {
+  var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("viewBox", "0 0 24 24");
+  svg.setAttribute("aria-hidden", "true");
+  svg.setAttribute("class", cls);
+  svg.innerHTML = ICONS[key] || "";
+  return svg;
+}
+function kickerEl(sec, label) {
+  var p = el("p", "kicker");
+  p.appendChild(el("span", null, label));
+  p.appendChild(iconEl(sec, "kicker-icon"));
+  return p;
+}
+
+var toastTimer;
+function toast(msg) {
+  var t = document.getElementById("toast");
+  t.textContent = msg; t.hidden = false;
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(function () { t.hidden = true; }, 2200);
+}
+
+function copyText(text) {
+  function fallback() {
+    try {
+      var ta = document.createElement("textarea");
+      ta.value = text; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0";
+      document.body.appendChild(ta); ta.select();
+      var ok = document.execCommand("copy");
+      document.body.removeChild(ta);
+      toast(ok ? "Copied" : "Could not copy. Select the text instead.");
+    } catch (e) { toast("Could not copy. Select the text instead."); }
+  }
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(function () { toast("Copied"); }, fallback);
+  } else { fallback(); }
+}
+
+function toggleSave(sec, id, item) {
+  if (isSaved(id)) {
+    saved = saved.filter(function (s) { return s.id !== id; });
+    toast("Removed from Saved");
+  } else {
+    saved.unshift({ id: id, sec: sec, text: plainText(sec, item) });
+    toast("Saved");
+  }
+  persistSaved();
+  render();
+}
+
+function renderCard(sec, cur) {
+  var s = SECTIONS[sec], item = cur.item;
+  var card = el("article", "card");
+  card.appendChild(kickerEl(sec, s.kicker));
+  if (sec === "verse") {
+    card.appendChild(el("h2", null, item[0]));
+    card.appendChild(el("p", "body", item[1]));
+  } else {
+    card.appendChild(el("h2", null, item[0]));
+    card.appendChild(el("p", "body plain", item[1]));
+    if (sec === "learn" && item[2]) {
+      var tr = el("p", "try");
+      tr.appendChild(el("b", null, "Try it: "));
+      tr.appendChild(document.createTextNode(item[2]));
+      card.appendChild(tr);
+    }
+  }
+  var actions = el("div", "actions");
+  var on = isSaved(cur.id);
+  var sv = el("button", "btn" + (on ? " on" : ""), on ? "Saved" : "Save");
+  sv.type = "button"; sv.setAttribute("aria-pressed", on ? "true" : "false");
+  sv.addEventListener("click", function () { toggleSave(sec, cur.id, item); });
+  var cp = el("button", "btn", "Copy");
+  cp.type = "button";
+  cp.addEventListener("click", function () { copyText(plainText(sec, item)); });
+  actions.appendChild(sv); actions.appendChild(cp);
+  card.appendChild(actions);
+  return card;
+}
+
+function renderSaved(view) {
+  var head = el("div", "saved-head");
+  head.appendChild(el("h2", null, "Saved"));
+  head.appendChild(el("span", null, saved.length + (saved.length === 1 ? " item" : " items")));
+  view.appendChild(head);
+  if (!saved.length) {
+    var p = el("p", "empty", "Nothing saved yet. Tap Save on any card to keep it here.");
+    p.style.marginTop = "1rem";
+    view.appendChild(p);
+    return;
+  }
+  var list = el("div", "saved-list");
+  list.style.marginTop = "1rem";
+  saved.forEach(function (s) {
+    var card = el("article", "card");
+    card.setAttribute("data-sec", s.sec);
+    card.appendChild(kickerEl(s.sec, SECTIONS[s.sec].label));
+    card.appendChild(el("p", "body plain", s.text));
+    var actions = el("div", "actions");
+    var rm = el("button", "btn", "Remove"); rm.type = "button";
+    rm.addEventListener("click", function () {
+      saved = saved.filter(function (x) { return x.id !== s.id; });
+      persistSaved(); render();
+    });
+    var cp = el("button", "btn", "Copy"); cp.type = "button";
+    cp.addEventListener("click", function () { copyText(s.text); });
+    actions.appendChild(rm); actions.appendChild(cp);
+    card.appendChild(actions);
+    list.appendChild(card);
+  });
+  view.appendChild(list);
+}
+
+function renderTabs() {
+  var box = document.getElementById("tabs");
+  box.textContent = "";
+  ORDER.forEach(function (key) {
+    var b = el("button", "tab");
+    b.type = "button";
+    b.setAttribute("data-sec", key);
+    b.appendChild(iconEl(key, "tab-icon"));
+    b.appendChild(el("span", null, key === "saved" ? "Saved" : SECTIONS[key].label));
+    if (key === tab) b.setAttribute("aria-current", "page");
+    b.addEventListener("click", function () {
+      tab = key;
+      try { localStorage.setItem("fl-tab", key); } catch (e) {}
+      render(); window.scrollTo(0, 0);
+    });
+    box.appendChild(b);
+  });
+}
+
+function renderDayNav() {
+  var nav = document.getElementById("daynav");
+  nav.hidden = tab === "saved";
+  var d = dayDate(offset);
+  var label = offset === 0 ? "Today" : offset === -1 ? "Yesterday" : d.toLocaleDateString(undefined, { weekday: "long" });
+  var when = document.getElementById("when");
+  when.textContent = "";
+  when.appendChild(el("strong", null, label));
+  when.appendChild(el("span", null, d.toLocaleDateString(undefined, { month: "long", day: "numeric", year: "numeric" })));
+  document.getElementById("next").disabled = offset >= 0;
+  document.getElementById("prev").disabled = offset <= Math.max(-365, minOffset());
+}
+
+function render() {
+  document.body.setAttribute("data-sec", tab);
+  var view = document.getElementById("view");
+  view.textContent = "";
+  if (tab === "saved") renderSaved(view);
+  else view.appendChild(renderCard(tab, currentItem(tab, offset)));
+  renderTabs();
+  renderDayNav();
+}
+
+document.getElementById("prev").addEventListener("click", function () { offset -= 1; render(); });
+document.getElementById("next").addEventListener("click", function () { if (offset < 0) { offset += 1; render(); } });
+
+document.addEventListener("visibilitychange", function () {
+  if (document.visibilityState !== "visible") return;
+  var k = dateKey(new Date());
+  if (k !== todayKey) { todayKey = k; offset = 0; render(); }
+});
+
+render();
+
+
+var deferredInstall = null;
+var installBtn = document.getElementById("install");
+window.addEventListener("beforeinstallprompt", function (e) {
+  e.preventDefault(); deferredInstall = e; installBtn.hidden = false;
+});
+installBtn.addEventListener("click", function () {
+  if (!deferredInstall) return;
+  deferredInstall.prompt();
+  deferredInstall.userChoice.then(function () { deferredInstall = null; installBtn.hidden = true; });
+});
+window.addEventListener("appinstalled", function () { installBtn.hidden = true; });
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", function () { navigator.serviceWorker.register("sw.js").catch(function () {}); });
+}
+</script>
+</body>
+</html>
