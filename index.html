@@ -93,9 +93,9 @@ header p { margin: 0.15rem 0 0; color: var(--muted); font-size: 0.9rem; }
 .body.plain { font-family: var(--ui); font-size: 1.1rem; line-height: 1.6; }
 .try { margin: 1.1rem 0 0; padding: 0.85rem 1rem; border-radius: 10px; background: var(--accent-soft); font-size: 0.98rem; }
 .try b { font-weight: 600; }
-.actions { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.4rem; }
+.actions { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.4rem; }
 .btn {
-  min-height: 2.75rem; padding: 0.4rem 1.1rem; border-radius: 999px;
+  min-height: 2.75rem; padding: 0.4rem 0.85rem; border-radius: 999px;
   border: 1px solid var(--accent); background: transparent; color: var(--accent); font-size: 0.95rem; font-weight: 500;
 }
 .btn.on { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
@@ -561,6 +561,20 @@ function copyText(text) {
   } else { fallback(); }
 }
 
+function appLink() {
+  return location.origin + location.pathname.replace(/index\.html$/, "");
+}
+function shareText(text) {
+  var msg = text + "\n\nFrom First Light: " + appLink();
+  if (navigator.share) {
+    navigator.share({ title: "First Light", text: msg }).catch(function (e) {
+      if (!e || e.name !== "AbortError") copyText(msg);
+    });
+  } else {
+    copyText(msg);
+  }
+}
+
 function toggleSave(sec, id, item) {
   if (isSaved(id)) {
     saved = saved.filter(function (s) { return s.id !== id; });
@@ -598,6 +612,9 @@ function renderCard(sec, cur) {
   var cp = el("button", "btn", "Copy");
   cp.type = "button";
   cp.addEventListener("click", function () { copyText(plainText(sec, item)); });
+  var sh = el("button", "btn", "Share");
+  sh.type = "button";
+  sh.addEventListener("click", function () { shareText(plainText(sec, item)); });
   if (canSpeak) {
     var talking = speakingId === cur.id;
     var ls = el("button", "btn" + (talking ? " on" : ""), talking ? "Stop" : "Listen");
@@ -606,7 +623,7 @@ function renderCard(sec, cur) {
     ls.addEventListener("click", function () { toggleSpeak(cur.id, spokenText(sec, item)); });
     actions.appendChild(ls);
   }
-  actions.appendChild(sv); actions.appendChild(cp);
+  actions.appendChild(sh); actions.appendChild(sv); actions.appendChild(cp);
   card.appendChild(actions);
   return card;
 }
@@ -637,7 +654,9 @@ function renderSaved(view) {
     });
     var cp = el("button", "btn", "Copy"); cp.type = "button";
     cp.addEventListener("click", function () { copyText(s.text); });
-    actions.appendChild(rm); actions.appendChild(cp);
+    var sh = el("button", "btn", "Share"); sh.type = "button";
+    sh.addEventListener("click", function () { shareText(s.text); });
+    actions.appendChild(sh); actions.appendChild(rm); actions.appendChild(cp);
     card.appendChild(actions);
     list.appendChild(card);
   });
