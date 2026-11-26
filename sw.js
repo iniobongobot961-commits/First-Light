@@ -1,5 +1,5 @@
 // First Light offline cache. Bump VERSION when you change any file so phones pick up the update.
-var VERSION = "first-light-lite-45078841";
+var VERSION = "first-light-lite-3514ae59";
 var SHELL = ["./", "index.html", "manifest.webmanifest"];
 
 self.addEventListener("install", function (e) {

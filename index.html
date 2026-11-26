@@ -459,6 +459,49 @@ function loadSaved() { try { return JSON.parse(localStorage.getItem("fl-saved") 
 function persistSaved() { try { localStorage.setItem("fl-saved", JSON.stringify(saved)); } catch (e) {} }
 function isSaved(id) { return saved.some(function (s) { return s.id === id; }); }
 
+var canSpeak = "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
+var speakingId = null;
+
+function spokenText(sec, item) {
+  var t;
+  if (sec === "verse") {
+    var ref = item[0]
+      .replace(/^1 /, "First ").replace(/^2 /, "Second ").replace(/^3 /, "Third ")
+      .replace(/(\d+):(\d+)-(\d+)/, "$1 verse $2 to $3")
+      .replace(/(\d+):(\d+)/, "$1 verse $2");
+    t = ref + ". " + item[1];
+  } else if (sec === "learn") {
+    t = item[0] + ". " + item[1] + (item[2] ? " Try it. " + item[2] : "");
+  } else {
+    t = item[0] + ". " + item[1];
+  }
+  return t.replace(/LORD/g, "Lord").replace(/\u00d7/g, " times ");
+}
+function stopSpeech() {
+  speakingId = null;
+  if (canSpeak) { try { window.speechSynthesis.cancel(); } catch (e) {} }
+}
+function toggleSpeak(id, text) {
+  if (!canSpeak) return;
+  if (speakingId === id) { stopSpeech(); render(); return; }
+  var synth = window.speechSynthesis;
+  var busy = false;
+  try { busy = synth.speaking || synth.pending; } catch (e) {}
+  if (busy) { try { synth.cancel(); } catch (e) {} }
+  speakingId = id;
+  function start() {
+    var u = new SpeechSynthesisUtterance(text);
+    u.lang = "en-US";
+    u.rate = 0.92;
+    function done() { if (speakingId === id) { speakingId = null; render(); } }
+    u.onend = done;
+    u.onerror = done;
+    try { synth.speak(u); } catch (e) { done(); }
+  }
+  if (busy) { setTimeout(start, 150); } else { start(); }
+  render();
+}
+
 function plainText(sec, item) {
   if (sec === "verse") return item[0] + " (KJV): " + item[1];
   if (sec === "learn") return item[0] + ": " + item[1] + (item[2] ? " Try it: " + item[2] : "");
@@ -555,6 +598,14 @@ function renderCard(sec, cur) {
   var cp = el("button", "btn", "Copy");
   cp.type = "button";
   cp.addEventListener("click", function () { copyText(plainText(sec, item)); });
+  if (canSpeak) {
+    var talking = speakingId === cur.id;
+    var ls = el("button", "btn" + (talking ? " on" : ""), talking ? "Stop" : "Listen");
+    ls.type = "button";
+    ls.setAttribute("aria-pressed", talking ? "true" : "false");
+    ls.addEventListener("click", function () { toggleSpeak(cur.id, spokenText(sec, item)); });
+    actions.appendChild(ls);
+  }
   actions.appendChild(sv); actions.appendChild(cp);
   card.appendChild(actions);
   return card;
@@ -629,8 +680,10 @@ function render() {
   document.body.setAttribute("data-sec", tab);
   var view = document.getElementById("view");
   view.textContent = "";
+  var shown = null;
   if (tab === "saved") renderSaved(view);
-  else view.appendChild(renderCard(tab, currentItem(tab, offset)));
+  else { shown = currentItem(tab, offset); view.appendChild(renderCard(tab, shown)); }
+  if (speakingId && (!shown || shown.id !== speakingId)) stopSpeech();
   renderTabs();
   renderDayNav();
 }
