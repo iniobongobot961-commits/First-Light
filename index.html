@@ -143,6 +143,18 @@ body{margin:0}
 [hidden]{display:none!important}
 .install{margin-top:0.75rem}
 </style>
+<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+window.OneSignalDeferred = window.OneSignalDeferred || [];
+OneSignalDeferred.push(async function (OneSignal) {
+  await OneSignal.init({
+    appId: "dd1dc5b4-87cc-4d30-bd45-90059daf53aa",
+    serviceWorkerPath: "First-Light/push/onesignal/OneSignalSDKWorker.js",
+    serviceWorkerParam: { scope: "/First-Light/push/onesignal/" },
+    notifyButton: { enable: true }
+  });
+});
+</script>
 </head>
 <body>
 
