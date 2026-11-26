@@ -158,7 +158,7 @@ body{margin:0}
     <button class="step" id="next" type="button" aria-label="Next day">&#8250;</button>
   </div>
   <main id="view" aria-live="polite"></main>
-  <footer>Scripture is from the King James Version (public domain). Reflections and lessons are original.</footer>
+  <footer>Scripture is from the King James Version (public domain). Reflections and lessons are original. Verse audio voiced with ElevenLabs.</footer>
 </div>
 
 <nav aria-label="Sections"><div class="tabs" id="tabs"></div></nav>
@@ -477,28 +477,45 @@ function spokenText(sec, item) {
   }
   return t.replace(/LORD/g, "Lord").replace(/\u00d7/g, " times ");
 }
+var currentAudio = null;
 function stopSpeech() {
   speakingId = null;
+  if (currentAudio) { try { currentAudio.pause(); } catch (e) {} currentAudio = null; }
   if (canSpeak) { try { window.speechSynthesis.cancel(); } catch (e) {} }
 }
+// Verse audio: plays audio/YYYY-MM-DD.mp3 if it exists, otherwise the phone voice.
+function audioUrlFor(id) {
+  var m = /^sheet:verse:(\d{4}-\d{2}-\d{2})$/.exec(id || "");
+  return m ? "audio/" + m[1] + ".mp3" : null;
+}
 function toggleSpeak(id, text) {
-  if (!canSpeak) return;
   if (speakingId === id) { stopSpeech(); render(); return; }
-  var synth = window.speechSynthesis;
-  var busy = false;
-  try { busy = synth.speaking || synth.pending; } catch (e) {}
-  if (busy) { try { synth.cancel(); } catch (e) {} }
+  stopSpeech();
   speakingId = id;
-  function start() {
+  function done() { if (speakingId === id) { speakingId = null; currentAudio = null; render(); } }
+  function speakNow() {
+    if (!canSpeak) { done(); return; }
     var u = new SpeechSynthesisUtterance(text);
     u.lang = "en-US";
     u.rate = 0.92;
-    function done() { if (speakingId === id) { speakingId = null; render(); } }
     u.onend = done;
     u.onerror = done;
-    try { synth.speak(u); } catch (e) { done(); }
+    setTimeout(function () {
+      if (speakingId !== id) return;
+      try { window.speechSynthesis.speak(u); } catch (e) { done(); }
+    }, 150);
   }
-  if (busy) { setTimeout(start, 150); } else { start(); }
+  var url = audioUrlFor(id);
+  if (url) {
+    var a = new Audio(url);
+    currentAudio = a;
+    a.onended = done;
+    a.onerror = function () { if (speakingId === id && currentAudio === a) { currentAudio = null; speakNow(); } };
+    var pr = a.play();
+    if (pr && pr.catch) pr.catch(function () { if (speakingId === id && currentAudio === a) { currentAudio = null; speakNow(); } });
+  } else {
+    speakNow();
+  }
   render();
 }
 
