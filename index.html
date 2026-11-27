@@ -170,6 +170,13 @@ footer .credit{display:block;margin-top:0.35rem;font-weight:600;color:var(--acce
 #splash{position:fixed;inset:0;z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.9rem;
   background:radial-gradient(circle at 50% 58%, #3A2A10 0, #0E1620 62%);color:#FFF4DC;transition:opacity 0.45s ease;cursor:pointer}
 #splash.gone{opacity:0;pointer-events:none}
+
+/* Keep the OneSignal bell above the bottom tab bar so it never covers Saved */
+#onesignal-bell-container.onesignal-reset.onesignal-bell-container-bottom-right{
+  bottom:calc(4.9rem + env(safe-area-inset-bottom, 0px)) !important;
+  right:14px !important;
+  z-index:4 !important;
+}
 .sunrise{position:relative;width:9rem;height:4.6rem;overflow:hidden;border-bottom:2px solid rgba(240,192,90,0.7);filter:drop-shadow(0 0 18px rgba(240,192,90,0.55))}
 .sunrise .sun{position:absolute;left:50%;bottom:-4.2rem;width:8rem;height:8rem;margin-left:-4rem;border-radius:50%;
   background:radial-gradient(circle, #FFE3A0 0, #F0C05A 55%, #C98A1C 100%)}
@@ -191,7 +198,12 @@ OneSignalDeferred.push(async function (OneSignal) {
     appId: "dd1dc5b4-87cc-4d30-bd45-90059daf53aa",
     serviceWorkerPath: "First-Light/push/onesignal/OneSignalSDKWorker.js",
     serviceWorkerParam: { scope: "/First-Light/push/onesignal/" },
-    notifyButton: { enable: true }
+    notifyButton: {
+      enable: true,
+      size: "small",
+      position: "bottom-right",
+      offset: { bottom: "84px", right: "14px" }
+    }
   });
 });
 </script>
