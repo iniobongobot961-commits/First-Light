@@ -823,6 +823,15 @@ function persistAsk() {
   try { localStorage.setItem("fl-ask", JSON.stringify(askLog)); } catch (e) {}
 }
 
+// Today's cards, sent with each question so the helper knows "today's verse" etc.
+function todayContext() {
+  var out = { date: keyOf(dayDate(0)) };
+  ["verse", "inspire", "facts", "learn"].forEach(function (sec) {
+    try { out[sec] = plainText(sec, currentItem(sec, 0).item); } catch (e) {}
+  });
+  return out;
+}
+
 function sendAsk(q) {
   q = (q || "").trim();
   if (!q || askBusy) return;
@@ -840,7 +849,7 @@ function sendAsk(q) {
   fetch(ASK_URL, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ question: q })
+    body: JSON.stringify({ question: q, today: todayContext() })
   })
     .then(function (r) { return r.json().catch(function () { return {}; }); })
     .then(function (data) {
