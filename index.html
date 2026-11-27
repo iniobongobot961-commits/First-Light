@@ -142,6 +142,7 @@ html{-webkit-text-size-adjust:100%}
 body{margin:0}
 [hidden]{display:none!important}
 .install{margin-top:0.75rem}
+header h1{touch-action:manipulation;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none}
 footer .credit{display:block;margin-top:0.35rem;font-weight:600;color:var(--accent)}
 
 /* Opening screen */
@@ -834,20 +835,29 @@ function render() {
 document.getElementById("prev").addEventListener("click", function () { offset -= 1; render(); });
 document.getElementById("next").addEventListener("click", function () { if (offset < maxOffset()) { offset += 1; render(); } });
 
-var titleTaps = 0, titleTimer;
-document.querySelector("header h1").addEventListener("click", function () {
+// Turn preview on or off: tap the title 5 times, or press and hold it for 2 seconds.
+var titleTaps = 0, titleTimer, holdTimer;
+var titleEl = document.querySelector("header h1");
+titleEl.addEventListener("contextmenu", function (e) { e.preventDefault(); });
+titleEl.addEventListener("pointerdown", function () {
+  clearTimeout(holdTimer);
+  holdTimer = setTimeout(function () { titleTaps = 0; togglePreview(); }, 2000);
   titleTaps += 1;
   clearTimeout(titleTimer);
-  titleTimer = setTimeout(function () { titleTaps = 0; }, 2000);
-  if (titleTaps < 5) return;
-  titleTaps = 0;
+  titleTimer = setTimeout(function () { titleTaps = 0; }, 2500);
+  if (titleTaps >= 5) { titleTaps = 0; clearTimeout(holdTimer); togglePreview(); }
+});
+["pointerup", "pointercancel", "pointerleave"].forEach(function (ev) {
+  titleEl.addEventListener(ev, function () { clearTimeout(holdTimer); });
+});
+function togglePreview() {
   preview = !preview;
   try { localStorage.setItem("fl-preview", preview ? "1" : "0"); } catch (e) {}
   if (!preview && offset > 0) offset = 0;
   toast(preview ? "Preview on: tap \u203a to see tomorrow" : "Preview off");
   loadSheet();
   render();
-});
+}
 
 document.addEventListener("visibilitychange", function () {
   if (document.visibilityState !== "visible") return;
