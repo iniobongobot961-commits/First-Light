@@ -28,6 +28,7 @@
     --facts-a: #0A6F6A; --facts-s: #D6F1EE; --facts-bg: #F1FBFA; --facts-on: #FFFFFF;
     --learn-a: #3A7220; --learn-s: #E0F2D5; --learn-bg: #F5FBF0; --learn-on: #FFFFFF;
     --saved-a: #35577F; --saved-s: #DFE8F3; --saved-bg: #F2F6FB; --saved-on: #FFFFFF;
+    --ask-a: #6B3FA0; --ask-s: #ECE2F7; --ask-bg: #F8F4FC; --ask-on: #FFFFFF;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
@@ -37,6 +38,7 @@
     --facts-a: #52D6CA; --facts-s: #123533; --facts-bg: #0C1818; --facts-on: #04211F;
     --learn-a: #9AD875; --learn-s: #21361A; --learn-bg: #101709; --learn-on: #0F2406;
     --saved-a: #8DB4E2; --saved-s: #1F2F43; --saved-bg: #0E1620; --saved-on: #08182B;
+    --ask-a: #C3A3EE; --ask-s: #2E2340; --ask-bg: #130F1A; --ask-on: #1C0F30;
     color-scheme: dark;
   }
 }
@@ -47,6 +49,7 @@
     --facts-a: #52D6CA; --facts-s: #123533; --facts-bg: #0C1818; --facts-on: #04211F;
     --learn-a: #9AD875; --learn-s: #21361A; --learn-bg: #101709; --learn-on: #0F2406;
     --saved-a: #8DB4E2; --saved-s: #1F2F43; --saved-bg: #0E1620; --saved-on: #08182B;
+    --ask-a: #C3A3EE; --ask-s: #2E2340; --ask-bg: #130F1A; --ask-on: #1C0F30;
   color-scheme: dark;
 }
 [data-sec="verse"]   { --accent: var(--verse-a);   --accent-soft: var(--verse-s);   --on-accent: var(--verse-on);   --bg: var(--verse-bg); }
@@ -54,6 +57,7 @@
 [data-sec="facts"]   { --accent: var(--facts-a);   --accent-soft: var(--facts-s);   --on-accent: var(--facts-on);   --bg: var(--facts-bg); }
 [data-sec="learn"]   { --accent: var(--learn-a);   --accent-soft: var(--learn-s);   --on-accent: var(--learn-on);   --bg: var(--learn-bg); }
 [data-sec="saved"]   { --accent: var(--saved-a);   --accent-soft: var(--saved-s);   --on-accent: var(--saved-on);   --bg: var(--saved-bg); }
+[data-sec="ask"]     { --accent: var(--ask-a);     --accent-soft: var(--ask-s);     --on-accent: var(--ask-on);     --bg: var(--ask-bg); }
 * { box-sizing: border-box; }
 body {
   background: linear-gradient(180deg, var(--accent-soft) 0, var(--bg) 300px) no-repeat, var(--bg);
@@ -118,10 +122,10 @@ nav {
   background: var(--surface); border-top: 1px solid var(--line);
   padding: 0.25rem max(8px, env(safe-area-inset-left, 0px)) calc(0.25rem + env(safe-area-inset-bottom, 0px)) max(8px, env(safe-area-inset-right, 0px));
 }
-nav .tabs { max-width: 38rem; margin: 0 auto; display: grid; grid-template-columns: repeat(5, 1fr); }
+nav .tabs { max-width: 38rem; margin: 0 auto; display: grid; grid-template-columns: repeat(6, 1fr); }
 .tab {
   background: none; border: 0; border-top: 3px solid transparent; border-radius: 0;
-  min-height: 3.6rem; padding: 0.35rem 0.2rem; font-size: 0.78rem; font-weight: 500; color: var(--muted);
+  min-height: 3.6rem; padding: 0.35rem 0.1rem; font-size: 0.74rem; font-weight: 500; color: var(--muted);
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.2rem;
 }
 .tab-icon { width: 1.4rem; height: 1.4rem; color: var(--accent); opacity: 0.7; }
@@ -144,6 +148,23 @@ body{margin:0}
 .install{margin-top:0.75rem}
 header h1{touch-action:manipulation;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none}
 footer .credit{display:block;margin-top:0.35rem;font-weight:600;color:var(--accent)}
+
+/* Ask me anything */
+.ask-intro { color: var(--muted); font-size: 0.95rem; margin: 0; }
+.chat { display: flex; flex-direction: column; gap: 0.7rem; margin-top: 1.1rem; }
+.msg { margin: 0; max-width: 88%; padding: 0.7rem 0.95rem; border-radius: 16px; white-space: pre-wrap; overflow-wrap: anywhere; font-size: 1rem; line-height: 1.5; }
+.msg.me { align-self: flex-end; background: var(--accent); color: var(--on-accent); border-bottom-right-radius: 5px; }
+.msg.bot { align-self: flex-start; background: var(--accent-soft); color: var(--fg); border-bottom-left-radius: 5px; }
+.msg.err { align-self: flex-start; background: transparent; border: 1px dashed var(--line); color: var(--muted); }
+.msg.wait { align-self: flex-start; background: var(--accent-soft); color: var(--muted); font-style: italic; }
+.ask-form { display: flex; gap: 0.5rem; align-items: flex-end; margin-top: 1.1rem; }
+.ask-form textarea { flex: 1; min-width: 0; min-height: 2.9rem; max-height: 9rem; resize: none; font: inherit; color: var(--fg);
+  background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 0.65rem 0.8rem; }
+.ask-form textarea:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+.ask-form .btn { flex: none; }
+.ask-foot { display: flex; justify-content: space-between; align-items: center; gap: 0.75rem; margin-top: 0.9rem; }
+.ask-foot .source { margin: 0; }
+.linkbtn { background: none; border: 0; padding: 0.3rem 0; color: var(--accent); font-size: 0.85rem; text-decoration: underline; }
 
 /* Opening screen */
 #splash{position:fixed;inset:0;z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.9rem;
@@ -445,7 +466,8 @@ var SECTIONS = {
   facts:   { label: "Facts",   kicker: "Did you know?",       items: FACTS,   salt: 3 },
   learn:   { label: "Learn",   kicker: "Learn something new", items: LEARN,   salt: 11 }
 };
-var ORDER = ["verse", "inspire", "facts", "learn", "saved"];
+var ORDER = ["verse", "inspire", "facts", "learn", "ask", "saved"];
+var TAB_LABELS = { ask: "Ask", saved: "Saved" };
 
 var tab = "verse";
 var offset = 0;
@@ -550,7 +572,7 @@ function loadSheet() {
       var rows = parseSheet(text);
       if (!rows || !Object.keys(rows).length) return;
       try { localStorage.setItem("fl-sheet", JSON.stringify(rows)); } catch (e) {}
-      if (applySheet(rows) && !speakingId) render();
+      if (applySheet(rows) && !speakingId && tab !== "ask") render();
     })
     .catch(function () {});
 }
@@ -645,7 +667,8 @@ var ICONS = {
   inspire: '<circle cx="12" cy="12" r="3.8"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M18.7 5.3l-2.1 2.1M7.4 16.6l-2.1 2.1"/>',
   facts: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.7 3.9 5.7 3.9 9s-1.3 6.3-3.9 9c-2.6-2.7-3.9-5.7-3.9-9S9.4 5.7 12 3Z"/>',
   learn: '<path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2V16h5v-.1c0-.8.4-1.5 1-2A6 6 0 0 0 12 3Z"/>',
-  saved: '<path d="M6.5 3.5h11v17l-5.5-4-5.5 4v-17Z"/>'
+  saved: '<path d="M6.5 3.5h11v17l-5.5-4-5.5 4v-17Z"/>',
+  ask: '<path d="M4.5 5.5h15v10h-8l-4.5 3.5v-3.5h-2.5Z"/><path d="M10.2 8.6a1.9 1.9 0 1 1 2.6 1.8c-.5.2-.8.6-.8 1.1"/><path d="M12 13.4v.1"/>'
 };
 function iconEl(key, cls) {
   var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
@@ -788,6 +811,102 @@ function renderSaved(view) {
   view.appendChild(list);
 }
 
+// Ask me anything: questions go to the First Light Worker on Cloudflare (free Workers AI).
+var ASK_URL = "https://first-light-ask.iniobongobot961.workers.dev";
+var askLog = [];
+try { askLog = JSON.parse(localStorage.getItem("fl-ask") || "[]"); } catch (e) { askLog = []; }
+var askDraft = "";
+var askBusy = false;
+
+function persistAsk() {
+  askLog = askLog.slice(-30);
+  try { localStorage.setItem("fl-ask", JSON.stringify(askLog)); } catch (e) {}
+}
+
+function sendAsk(q) {
+  q = (q || "").trim();
+  if (!q || askBusy) return;
+  if (q.length > 500) { toast("Please keep your question under 500 characters."); return; }
+  askLog.push({ who: "me", text: q });
+  askDraft = "";
+  askBusy = true;
+  persistAsk();
+  render();
+  if (typeof fetch !== "function" || navigator.onLine === false) {
+    askBusy = false;
+    askLog.push({ who: "err", text: "You seem to be offline. Connect to the internet and try again." });
+    persistAsk(); render(); return;
+  }
+  fetch(ASK_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ question: q })
+  })
+    .then(function (r) { return r.json().catch(function () { return {}; }); })
+    .then(function (data) {
+      if (data && data.answer) askLog.push({ who: "bot", text: String(data.answer).trim() });
+      else askLog.push({ who: "err", text: (data && data.error) || "Sorry, no answer came back. Please try again later." });
+    })
+    .catch(function () {
+      askLog.push({ who: "err", text: "Sorry, I couldn't reach the helper right now. Please try again later." });
+    })
+    .then(function () {
+      askBusy = false;
+      persistAsk();
+      if (tab === "ask") { render(); scrollAskToEnd(); }
+    });
+}
+
+function scrollAskToEnd() {
+  setTimeout(function () { window.scrollTo(0, document.body.scrollHeight); }, 30);
+}
+
+function renderAsk(view) {
+  var card = el("article", "card");
+  card.appendChild(kickerEl("ask", "Ask me anything"));
+  card.appendChild(el("p", "ask-intro", "Ask about the Bible, faith, today's reading or anything you are curious about."));
+
+  var chat = el("div", "chat");
+  if (!askLog.length && !askBusy) {
+    chat.appendChild(el("p", "msg bot", "Hello! What would you like to know today?"));
+  }
+  askLog.forEach(function (m) { chat.appendChild(el("p", "msg " + m.who, m.text)); });
+  if (askBusy) chat.appendChild(el("p", "msg wait", "Thinking…"));
+  card.appendChild(chat);
+
+  var form = el("form", "ask-form");
+  var ta = document.createElement("textarea");
+  ta.rows = 1;
+  ta.maxLength = 500;
+  ta.placeholder = "Type your question";
+  ta.setAttribute("aria-label", "Your question");
+  ta.value = askDraft;
+  ta.disabled = askBusy;
+  ta.addEventListener("input", function () {
+    askDraft = ta.value;
+    ta.style.height = "auto";
+    ta.style.height = Math.min(ta.scrollHeight, 144) + "px";
+  });
+  var send = el("button", "btn on", askBusy ? "Wait" : "Send");
+  send.type = "submit";
+  send.disabled = askBusy;
+  form.appendChild(ta);
+  form.appendChild(send);
+  form.addEventListener("submit", function (e) { e.preventDefault(); sendAsk(ta.value); });
+  card.appendChild(form);
+
+  var foot = el("div", "ask-foot");
+  foot.appendChild(el("p", "source", "Answers come from AI and can be wrong. Check Scripture for yourself."));
+  if (askLog.length && !askBusy) {
+    var clr = el("button", "linkbtn", "Clear");
+    clr.type = "button";
+    clr.addEventListener("click", function () { askLog = []; persistAsk(); render(); });
+    foot.appendChild(clr);
+  }
+  card.appendChild(foot);
+  view.appendChild(card);
+}
+
 function renderTabs() {
   var box = document.getElementById("tabs");
   box.textContent = "";
@@ -796,7 +915,7 @@ function renderTabs() {
     b.type = "button";
     b.setAttribute("data-sec", key);
     b.appendChild(iconEl(key, "tab-icon"));
-    b.appendChild(el("span", null, key === "saved" ? "Saved" : SECTIONS[key].label));
+    b.appendChild(el("span", null, TAB_LABELS[key] || SECTIONS[key].label));
     if (key === tab) b.setAttribute("aria-current", "page");
     b.addEventListener("click", function () {
       tab = key;
@@ -809,7 +928,7 @@ function renderTabs() {
 
 function renderDayNav() {
   var nav = document.getElementById("daynav");
-  nav.hidden = tab === "saved";
+  nav.hidden = tab === "saved" || tab === "ask";
   var d = dayDate(offset);
   var label = offset === 0 ? "Today" : offset === -1 ? "Yesterday" : offset === 1 ? "Tomorrow (preview)" : d.toLocaleDateString(undefined, { weekday: "long" });
   var when = document.getElementById("when");
@@ -826,6 +945,7 @@ function render() {
   view.textContent = "";
   var shown = null;
   if (tab === "saved") renderSaved(view);
+  else if (tab === "ask") renderAsk(view);
   else { shown = currentItem(tab, offset); view.appendChild(renderCard(tab, shown)); }
   if (speakingId && (!shown || shown.id !== speakingId)) stopSpeech();
   renderTabs();
