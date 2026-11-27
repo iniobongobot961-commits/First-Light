@@ -428,6 +428,11 @@ var offset = 0;
 var todayKey = dateKey(new Date());
 var saved = loadSaved();
 
+// Owner preview: tap the "First Light" title 5 times to show tomorrow. Stored only on this phone.
+var preview = false;
+try { preview = localStorage.getItem("fl-preview") === "1"; } catch (e) {}
+function maxOffset() { return preview ? 1 : 0; }
+
 try { var t = localStorage.getItem("fl-tab"); if (t && ORDER.indexOf(t) > -1) tab = t; } catch (e) {}
 
 function dateKey(d) { return d.getFullYear() + "-" + d.getMonth() + "-" + d.getDate(); }
@@ -466,6 +471,67 @@ function currentItem(sec, off) {
   var idx = pickIndex(sec, off);
   return { id: sec + ":" + idx, item: SECTIONS[sec].items[idx] };
 }
+
+// Live schedule: each time the app opens, read the "Daily" tab of the Google Sheet,
+// so edits in the sheet show up without re-uploading this file.
+// The sheet must stay shared as "Anyone with the link can view". Keep the columns in the same order.
+var SHEET_ID = "1tVgcOcXwezhb2mfH2CPyxYPCw3z4_iyushug6ZTa8bA";
+var SHEET_TAB = "Daily";
+var lastSheetFetch = 0;
+
+function sheetDateKey(s) {
+  if (s == null) return "";
+  s = String(s).trim();
+  var m = /^Date\((\d+),(\d+),(\d+)/.exec(s);
+  if (m) return keyOf(new Date(+m[1], +m[2], +m[3]));
+  m = /^(\d{4})-(\d{1,2})-(\d{1,2})/.exec(s);
+  if (m) return keyOf(new Date(+m[1], +m[2] - 1, +m[3]));
+  return "";
+}
+function applySheet(rows) {
+  if (!rows) return false;
+  var changed = false;
+  Object.keys(rows).forEach(function (k) {
+    if (JSON.stringify(sheetRows[k]) !== JSON.stringify(rows[k])) { sheetRows[k] = rows[k]; changed = true; }
+  });
+  return changed;
+}
+function parseSheet(text) {
+  var start = text.indexOf("("), end = text.lastIndexOf(")");
+  if (start < 0 || end <= start) return null;
+  var data = JSON.parse(text.slice(start + 1, end));
+  if (!data || !data.table || !data.table.rows) return null;
+  var out = {};
+  data.table.rows.forEach(function (r) {
+    var c = r.c || [];
+    var key = sheetDateKey(c[0] && c[0].v) || sheetDateKey(c[0] && c[0].f);
+    if (!key) return;
+    var row = [key];
+    for (var i = 1; i < 10; i++) {
+      var x = c[i];
+      row.push(x && x.v != null ? String(x.f != null ? x.f : x.v) : "");
+    }
+    out[key] = row;
+  });
+  return out;
+}
+function loadSheet() {
+  if (typeof fetch !== "function") return;
+  lastSheetFetch = Date.now();
+  var url = "https://docs.google.com/spreadsheets/d/" + SHEET_ID +
+    "/gviz/tq?tqx=out:json&headers=1&sheet=" + encodeURIComponent(SHEET_TAB) + "&_=" + Date.now();
+  fetch(url, { cache: "no-store" })
+    .then(function (r) { return r.text(); })
+    .then(function (text) {
+      var rows = parseSheet(text);
+      if (!rows || !Object.keys(rows).length) return;
+      try { localStorage.setItem("fl-sheet", JSON.stringify(rows)); } catch (e) {}
+      if (applySheet(rows) && !speakingId) render();
+    })
+    .catch(function () {});
+}
+// Use the last copy read from the sheet straight away (works offline), then fetch a fresh one.
+try { applySheet(JSON.parse(localStorage.getItem("fl-sheet") || "null")); } catch (e) {}
 
 function loadSaved() { try { return JSON.parse(localStorage.getItem("fl-saved") || "[]"); } catch (e) { return []; } }
 function persistSaved() { try { localStorage.setItem("fl-saved", JSON.stringify(saved)); } catch (e) {} }
@@ -721,12 +787,12 @@ function renderDayNav() {
   var nav = document.getElementById("daynav");
   nav.hidden = tab === "saved";
   var d = dayDate(offset);
-  var label = offset === 0 ? "Today" : offset === -1 ? "Yesterday" : d.toLocaleDateString(undefined, { weekday: "long" });
+  var label = offset === 0 ? "Today" : offset === -1 ? "Yesterday" : offset === 1 ? "Tomorrow (preview)" : d.toLocaleDateString(undefined, { weekday: "long" });
   var when = document.getElementById("when");
   when.textContent = "";
   when.appendChild(el("strong", null, label));
   when.appendChild(el("span", null, d.toLocaleDateString(undefined, { month: "long", day: "numeric", year: "numeric" })));
-  document.getElementById("next").disabled = offset >= 0;
+  document.getElementById("next").disabled = offset >= maxOffset();
   document.getElementById("prev").disabled = offset <= Math.max(-365, minOffset());
 }
 
@@ -743,15 +809,32 @@ function render() {
 }
 
 document.getElementById("prev").addEventListener("click", function () { offset -= 1; render(); });
-document.getElementById("next").addEventListener("click", function () { if (offset < 0) { offset += 1; render(); } });
+document.getElementById("next").addEventListener("click", function () { if (offset < maxOffset()) { offset += 1; render(); } });
+
+var titleTaps = 0, titleTimer;
+document.querySelector("header h1").addEventListener("click", function () {
+  titleTaps += 1;
+  clearTimeout(titleTimer);
+  titleTimer = setTimeout(function () { titleTaps = 0; }, 2000);
+  if (titleTaps < 5) return;
+  titleTaps = 0;
+  preview = !preview;
+  try { localStorage.setItem("fl-preview", preview ? "1" : "0"); } catch (e) {}
+  if (!preview && offset > 0) offset = 0;
+  toast(preview ? "Preview on: tap \u203a to see tomorrow" : "Preview off");
+  loadSheet();
+  render();
+});
 
 document.addEventListener("visibilitychange", function () {
   if (document.visibilityState !== "visible") return;
   var k = dateKey(new Date());
   if (k !== todayKey) { todayKey = k; offset = 0; render(); }
+  if (preview || Date.now() - lastSheetFetch > 5 * 60 * 1000) loadSheet();
 });
 
 render();
+loadSheet();
 
 
 var deferredInstall = null;
